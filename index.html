@@ -6,7 +6,7 @@
   <title>Mzansi Connect — Smart Technology for Every South African</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;900&family=Archivo+Black&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/png" href="Logo.png">
+  <link rel="icon" type="image/png" href="images/Logo.png">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -618,6 +618,136 @@
     .contact-form .form-status.success { color: var(--sa-green); }
     .contact-form .form-status.error { color: var(--sa-red); }
 
+    .prototype-spotlight {
+      background: var(--sa-black);
+      border-bottom: var(--brutal-border);
+      padding: 80px 0;
+    }
+    .proto-specs {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      margin: 36px 0;
+    }
+    .proto-col {
+      border: 3px solid rgba(255,255,255,0.2);
+      padding: 28px;
+    }
+    .proto-col h4 {
+      font-size: 0.85rem;
+      color: var(--sa-gold);
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .proto-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .proto-col ul li {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.8);
+      padding-left: 20px;
+      position: relative;
+    }
+    .proto-col ul li::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: var(--sa-gold);
+    }
+    .proto-gallery {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 36px 0;
+    }
+    .gallery-item {
+      border: 3px solid rgba(255,255,255,0.2);
+      overflow: hidden;
+      background: rgba(255,255,255,0.05);
+    }
+    .gallery-item img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    @media (max-width: 600px) {
+      .proto-gallery { grid-template-columns: 1fr; }
+    }
+
+    .proto-arch {
+      margin: 36px 0;
+      padding: 32px;
+      border: 3px solid rgba(255,255,255,0.15);
+      background: rgba(255,255,255,0.03);
+    }
+    .proto-arch h4 {
+      font-size: 0.75rem;
+      color: var(--sa-gold);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 20px;
+    }
+    .arch-diagram {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      text-align: center;
+    }
+    .arch-node {
+      display: inline-block;
+      border: 2px solid var(--sa-gold);
+      padding: 12px 20px;
+      font-weight: 700;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      color: var(--sa-white);
+      background: rgba(255,182,18,0.08);
+    }
+    .arch-node small {
+      display: block;
+      font-weight: 400;
+      font-size: 0.65rem;
+      color: rgba(255,255,255,0.6);
+      text-transform: none;
+      margin-top: 4px;
+    }
+    .arch-node.small {
+      font-size: 0.7rem;
+      padding: 8px 14px;
+      border-color: rgba(255,255,255,0.3);
+    }
+    .arch-arrow {
+      color: var(--sa-gold);
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+    .arch-arrow small {
+      display: block;
+      font-size: 0.55rem;
+      color: rgba(255,255,255,0.5);
+      text-transform: none;
+    }
+    .arch-arrow.branch {
+      display: none;
+    }
+    .proto-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 32px;
+    }
+
+    @media (max-width: 768px) {
+      .proto-specs { grid-template-columns: 1fr; }
+      .arch-diagram { flex-direction: column; }
+    }
+
     @media (max-width: 480px) {
       .contact-form .form-row { flex-direction: column; gap: 0; }
     }
@@ -707,18 +837,18 @@
   <nav style="top:8px;">
     <div class="container">
       <a href="#" class="nav-logo">
-        <img src="Logo.png" alt="Mzansi Connect" style="width:83px;height:83px;object-fit:contain;flex-shrink:0;">
+        <img src="images/Logo.png" alt="Mzansi Connect" style="width:83px;height:83px;object-fit:contain;flex-shrink:0;">
         <div>
           <span>Mzansi<br>Connect</span>
           <small>Skyline IT Company</small>
         </div>
       </a>
       <ul class="nav-links" id="navLinks">
+        <li><a href="#prototype" class="nav-cta">Prototype</a></li>
         <li><a href="#products">Products</a></li>
         <li><a href="#ideas">Innovations</a></li>
         <li><a href="#ecosystem">Ecosystem</a></li>
-        <li><a href="#vision">Vision</a></li>
-        <li><a href="#contact" class="nav-cta">Contact</a></li>
+        <li><a href="#contact">Contact</a></li>
       </ul>
       <button class="hamburger" id="hamburger" aria-label="Menu">
         <span></span><span></span><span></span>
@@ -729,23 +859,27 @@
   <!-- ─── HERO ─── -->
   <section class="hero" id="home">
     <div class="container">
-      <div class="hero-badge">A Skyline IT &amp; Cloud Company</div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:24px;">
+        <div class="hero-badge">A Skyline IT &amp; Cloud Company</div>
+        <div class="hero-badge" style="background:var(--sa-gold);color:var(--black);border-color:var(--sa-gold);border:3px solid var(--sa-white);">Livestock Tracker Prototype</div>
+      </div>
       <h1>
-        Connecting<br>
-        <span class="highlight">South Africa</span><br>
-        to the Future
+        Tracking<br>
+        <span class="highlight">South Africa's</span><br>
+        <span style="color:var(--sa-gold);">Livestock</span>
       </h1>
-      <div class="hero-sub">Smart Technology for Every South African</div>
+      <div class="hero-sub">Built for emerging farmers. Powered by ESP32. Protecting what matters.</div>
       <p>
-        Mzansi Connect makes IoT affordable, practical, and accessible — bringing smart technology 
-        to townships, rural communities, small businesses, schools, and entrepreneurs.
+        The <strong>Livestock GPS Tracker</strong> is our flagship IoT prototype — an ESP32-powered GPS collar 
+        that lets farmers monitor their cattle, sheep, and goats in real time. Solar-powered, cellular-connected, 
+        and affordable at under R800 per unit. Physical prototype in progress now.
       </p>
       <div class="hero-actions">
-        <a href="#products" class="btn btn-gold">Explore Products</a>
-        <a href="#ecosystem" class="btn btn-outline-white">Our Ecosystem</a>
+        <a href="#prototype" class="btn btn-gold">See the Prototype</a>
+        <a href="#products" class="btn btn-outline-white">All Products</a>
       </div>
       <div class="hero-stat">
-        <strong>2025</strong> Founded · Durban, SA
+        <strong>Flagship</strong> ESP32 + GPS + GSM · Solar · ~$40/unit
       </div>
     </div>
   </section>
@@ -772,6 +906,7 @@
             <li>High electricity costs</li>
             <li>Water wastage</li>
             <li>Crime and theft</li>
+            <li>Livestock theft costing farmers billions</li>
             <li>Limited access to technology</li>
             <li>Poor business monitoring tools</li>
             <li>Lack of affordable automation</li>
@@ -792,6 +927,95 @@
     </div>
   </section>
 
+  <!-- ─── PROTOTYPE SPOTLIGHT ─── -->
+  <section class="prototype-spotlight" id="prototype">
+    <div class="container">
+      <div class="section-label">
+        <span style="color:var(--sa-white);">Now Prototyping</span>
+        <div class="line" style="background:var(--sa-white);"></div>
+      </div>
+      <h2 style="color:var(--sa-white);">Livestock <span style="color:var(--sa-gold);">GPS Tracker</span></h2>
+      <p class="section-desc" style="color:rgba(255,255,255,0.7);max-width:800px;">
+        A full-stack IoT prototype: ESP32 collar + Express API + Supabase/PostgreSQL + Web dashboard + Android app. 
+        Built for South African emerging farmers to monitor livestock in real time.
+      </p>
+
+      <div class="proto-specs">
+        <div class="proto-col">
+          <h4>Collar Hardware</h4>
+          <ul>
+            <li>ESP32-WROOM-32</li>
+            <li>NEO-6M GPS module</li>
+            <li>SIM800L GSM (cellular)</li>
+            <li>TP4056 LiPo charger</li>
+            <li>5000mAh + 1W solar</li>
+            <li>Deep sleep: 5min intervals</li>
+            <li>~$40/unit (cellular)</li>
+          </ul>
+        </div>
+        <div class="proto-col">
+          <h4>Server &amp; API</h4>
+          <ul>
+            <li>Express.js + Supabase</li>
+            <li>helmet · cors · rate-limit</li>
+            <li>X-API-Key auth for collars</li>
+            <li>PostGIS geospatial queries</li>
+            <li>Geofence breach detection</li>
+            <li>RLS per-farmer data isolation</li>
+            <li>REST: 7 endpoints</li>
+          </ul>
+        </div>
+        <div class="proto-col">
+          <h4>Apps &amp; Dashboard</h4>
+          <ul>
+            <li>Web dashboard (map-based)</li>
+            <li>Android app (Kotlin)</li>
+            <li>Real-time location view</li>
+            <li>Animal list &amp; status</li>
+            <li>Historical trail playback</li>
+            <li>Battery &amp; health alerts</li>
+            <li>Supabase realtime sync</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="proto-gallery">
+        <div class="gallery-item">
+          <img src="images/Demo 1.png" alt="Livestock GPS Tracker dashboard">
+        </div>
+        <div class="gallery-item">
+          <img src="images/Demo 2.png" alt="Livestock GPS Tracker map view">
+        </div>
+        <div class="gallery-item">
+          <img src="images/Demo 3.png" alt="Livestock GPS Tracker analytics">
+        </div>
+        <div class="gallery-item">
+          <img src="images/Demo 4.png" alt="Livestock GPS Tracker animal list">
+        </div>
+      </div>
+
+      <div class="proto-arch">
+        <h4>Architecture</h4>
+        <div class="arch-diagram">
+          <span class="arch-node">ESP32 Collar<br><small>GPS + GSM</small></span>
+          <span class="arch-arrow">→ <small>POST /api/locations<br>(X-API-Key)</small></span>
+          <span class="arch-node">Express API<br><small>Server</small></span>
+          <span class="arch-arrow">→</span>
+          <span class="arch-node">Supabase<br><small>PostgreSQL + PostGIS</small></span>
+          <span class="arch-arrow branch">↘</span>
+          <span class="arch-arrow branch">↙</span>
+          <span class="arch-node small">Web Dashboard</span>
+          <span class="arch-node small">Android App</span>
+        </div>
+      </div>
+
+      <div class="proto-actions">
+        <a href="https://github.com" class="btn btn-gold" style="border-color:var(--sa-white);">View on GitHub</a>
+        <a href="#contact" class="btn btn-outline-white" style="border-color:var(--sa-white);">Partner With Us</a>
+      </div>
+    </div>
+  </section>
+
   <!-- ─── PRODUCTS ─── -->
   <section id="products">
     <div class="container">
@@ -804,6 +1028,48 @@
         Practical, low-cost IoT solutions designed for South African homes, businesses, and communities.
       </p>
       <div class="product-grid">
+        <div class="product-card" id="livestock" style="grid-column:1/-1;border-width:6px;border-color:var(--sa-gold);box-shadow:12px 12px 0 var(--black);">
+          <div style="display:grid;grid-template-columns:auto 1fr;gap:32px;align-items:start;">
+            <div style="font-size:4rem;line-height:1;text-align:center;padding-top:8px;">🐄</div>
+            <div>
+              <span class="card-badge gold" style="font-size:0.8rem;padding:6px 16px;">★ Flagship Prototype — Physical Build in Progress</span>
+              <h3 style="font-size:1.6rem;margin:12px 0;">Livestock GPS Tracker</h3>
+              <p style="font-size:0.95rem;color:var(--gray-700);line-height:1.5;margin-bottom:16px;">
+                A full-stack IoT livestock tracking system. The ESP32 collar posts GPS coordinates to a secure 
+                Express/Supabase API. Farmers view real-time locations on the web dashboard or Android app. 
+                Geofence breaches trigger instant alerts. Solar-recharged battery lasts weeks.
+              </p>
+              <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:16px;">
+                <div style="border:2px solid var(--gray-300);padding:12px;text-align:center;">
+                  <strong style="font-size:1.2rem;font-family:'Archivo Black',sans-serif;">ESP32</strong>
+                  <p style="font-size:0.7rem;color:var(--gray-700);">Microcontroller</p>
+                </div>
+                <div style="border:2px solid var(--gray-300);padding:12px;text-align:center;">
+                  <strong style="font-size:1.2rem;font-family:'Archivo Black',sans-serif;">GPS+GSM</strong>
+                  <p style="font-size:0.7rem;color:var(--gray-700);">Connectivity</p>
+                </div>
+                <div style="border:2px solid var(--gray-300);padding:12px;text-align:center;">
+                  <strong style="font-size:1.2rem;font-family:'Archivo Black',sans-serif;">Solar</strong>
+                  <p style="font-size:0.7rem;color:var(--gray-700);">Recharged</p>
+                </div>
+              </div>
+              <div class="benefits" style="border-top-color:var(--sa-gold);margin-top:0;">
+                <strong>Key Features</strong>
+                <ul style="display:grid;grid-template-columns:1fr 1fr;">
+                  <li>Real-time GPS tracking (1-min intervals)</li>
+                  <li>Geofence breach alerts</li>
+                  <li>Solar-powered deep sleep collar</li>
+                  <li>Web dashboard + Android app</li>
+                  <li>Battery voltage monitoring</li>
+                  <li>Historical trail playback</li>
+                  <li>Supabase/PostGIS backend</li>
+                  <li>Affordable at ~$40/unit</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div class="product-card">
           <span class="card-icon">🔒</span>
           <span class="card-badge red">Popular</span>
@@ -962,16 +1228,6 @@
           <p>An affordable technology package for schools including attendance tracking, environmental monitoring, smart bell system, and security alerts.</p>
         </div>
 
-        <div class="idea-card">
-          <span class="idea-icon">🐄</span>
-          <h3>Digital Livestock Tracker</h3>
-          <div class="tags">
-            <span>GPS Tracking</span>
-            <span>Health Monitoring</span>
-            <span>Theft Prevention</span>
-          </div>
-          <p>For emerging farmers — GPS tracking, health monitoring, theft prevention, and water monitoring to significantly reduce livestock theft.</p>
-        </div>
       </div>
     </div>
   </section>
@@ -1087,8 +1343,8 @@
     <div class="container">
       <h2>Ready to <span class="highlight-green">Connect</span>?</h2>
       <p>
-        Let's build a smarter South Africa together. Get in touch for partnerships, product inquiries, 
-        or to join the Mzansi Connect ecosystem.
+        Interested in the Livestock GPS Tracker prototype? Want to partner, invest, or pilot it on your farm? 
+        Get in touch — let's build a smarter South Africa together.
       </p>
       <form id="contactForm" class="contact-form">
         <div class="form-row">
@@ -1111,7 +1367,7 @@
     <div class="container">
       <div>
         <div class="footer-logo-wrap" style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
-          <img src="Logo.png" alt="Mzansi Connect" style="width:52px;height:52px;object-fit:contain;flex-shrink:0;">
+          <img src="images/Logo.png" alt="Mzansi Connect" style="width:52px;height:52px;object-fit:contain;flex-shrink:0;">
           <div>
             <div class="footer-brand">Mzansi Connect</div>
             <div class="footer-subsidiary">A Skyline IT &amp; Cloud Company</div>
