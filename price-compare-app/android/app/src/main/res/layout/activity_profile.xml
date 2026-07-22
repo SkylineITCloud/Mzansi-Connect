@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:orientation="vertical">
+
+    <!-- Flag Strip -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:orientation="horizontal">
+        <View android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:background="@color/sa_green" />
+        <View android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:background="@color/sa_gold" />
+        <View android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:background="@color/sa_red" />
+        <View android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:background="@color/sa_blue" />
+        <View android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:background="@color/sa_black" />
+        <View android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:background="@color/white" />
+    </LinearLayout>
+
+    <!-- Header -->
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardElevation="2dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="0dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="16dp">
+
+            <ImageButton
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:id="@+id/btnBack"
+                android:src="@android:drawable/ic_menu_revert"
+                android:background="@drawable/bg_circle"
+                android:backgroundTint="@color/green_light"
+                android:contentDescription="Back" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="12dp"
+                android:text="@string/profile_title"
+                android:textColor="@color/sa_black"
+                android:textSize="20sp"
+                android:fontFamily="sans-serif-black" />
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Content -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="32dp">
+
+        <TextView
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:gravity="center"
+            android:text="🇿🇦"
+            android:textSize="40sp"
+            android:background="@drawable/bg_circle"
+            android:backgroundTint="@color/green_light" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvName"
+            android:layout_marginTop="16dp"
+            android:textColor="@color/text_primary"
+            android:textSize="22sp"
+            android:fontFamily="sans-serif-black" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvEmail"
+            android:textColor="@color/text_secondary"
+            android:textSize="14sp"
+            android:layout_marginTop="4dp" />
+
+    </LinearLayout>
+
+    <!-- Bottom Navigation -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/bottomNav"
+        android:background="@color/white"
+        app:menu="@menu/bottom_nav"
+        app:itemIconTint="@color/sa_green"
+        app:itemTextColor="@color/text_secondary"
+        app:labelVisibilityMode="labeled" />
+
+</LinearLayout>

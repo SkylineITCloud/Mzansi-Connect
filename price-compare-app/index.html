@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mzansi Price Compare — Find the Best Price in SA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;900&family=Archivo+Black&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green: #007A4B;
+      --gold: #FFB612;
+      --red: #DE3831;
+      --blue: #002395;
+      --black: #000000;
+      --white: #FFFFFF;
+      --bg: #F5F5F5;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+      background: var(--bg);
+      color: var(--black);
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3 { font-family: 'Archivo Black', sans-serif; text-transform: uppercase; letter-spacing: -0.02em; }
+
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+    .flag-strip { display: flex; height: 6px; width: 100%; position: fixed; top: 0; left: 0; z-index: 100; }
+    .flag-strip span { flex: 1; }
+    .flag-strip span:nth-child(1) { background: var(--green); }
+    .flag-strip span:nth-child(2) { background: var(--gold); }
+    .flag-strip span:nth-child(3) { background: var(--red); }
+    .flag-strip span:nth-child(4) { background: var(--blue); }
+    .flag-strip span:nth-child(5) { background: var(--black); }
+    .flag-strip span:nth-child(6) { background: var(--white); }
+
+    nav {
+      position: fixed;
+      top: 6px; left: 0; right: 0;
+      z-index: 99;
+      background: var(--white);
+      border-bottom: 3px solid var(--black);
+      padding: 12px 0;
+    }
+
+    nav .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--black);
+    }
+
+    .nav-brand .icon {
+      width: 38px; height: 38px;
+      background: var(--green);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      color: var(--gold);
+      font-size: 18px;
+    }
+
+    .nav-brand span {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      line-height: 1.1;
+    }
+
+    .nav-brand small {
+      display: block;
+      font-size: 0.55rem;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 500;
+      text-transform: none;
+      color: #666;
+    }
+
+    .nav-links { display: flex; gap: 6px; list-style: none; }
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      padding: 8px 14px;
+      border: 2px solid transparent;
+      color: var(--black);
+      transition: 0.15s;
+    }
+    .nav-links a:hover { border-color: var(--black); }
+    .nav-links .btn-demo { background: var(--green); color: var(--white); border-color: var(--green); }
+
+    /* HERO */
+    .hero {
+      padding: 140px 0 80px;
+      background: var(--black);
+      color: var(--white);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(255,255,255,0.02) 40px, rgba(255,255,255,0.02) 80px);
+    }
+
+    .hero .container { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+
+    .hero-badge {
+      display: inline-block;
+      padding: 6px 16px;
+      background: var(--green);
+      border: 2px solid var(--white);
+      font-weight: 700;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      line-height: 0.95;
+      margin-bottom: 8px;
+    }
+    .hero h1 .gold { color: var(--gold); }
+
+    .hero-sub {
+      font-size: 1.3rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+
+    .hero p {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.75);
+      margin-bottom: 28px;
+      max-width: 480px;
+    }
+
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: 3px solid var(--black);
+      transition: 0.15s;
+    }
+    .btn-gold { background: var(--gold); color: var(--black); }
+    .btn-gold:hover { background: var(--green); color: var(--white); border-color: var(--green); transform: translate(-3px,-3px); }
+    .btn-outline { background: transparent; color: var(--white); border-color: var(--white); }
+    .btn-outline:hover { background: var(--white); color: var(--black); transform: translate(-3px,-3px); }
+
+    .hero-phone {
+      text-align: center;
+    }
+
+    .phone-frame {
+      width: 280px;
+      height: 540px;
+      background: var(--black);
+      border: 4px solid #333;
+      border-radius: 36px;
+      margin: 0 auto;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 20px 20px 0 rgba(0,122,75,0.3);
+    }
+
+    .phone-frame .screen {
+      background: var(--white);
+      margin: 8px;
+      border-radius: 28px;
+      height: calc(100% - 16px);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .phone-frame .notch {
+      width: 120px; height: 24px;
+      background: var(--black);
+      border-radius: 0 0 16px 16px;
+      margin: 0 auto;
+    }
+
+    .phone-frame .status-bar {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 16px 4px;
+      font-size: 10px;
+      font-weight: 700;
+    }
+
+    .phone-header {
+      background: var(--green);
+      padding: 10px 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .phone-header .dot {
+      width: 6px; height: 6px; border-radius: 50%; background: var(--gold);
+    }
+    .phone-header span {
+      color: var(--white); font-size: 11px; font-weight: 700; text-transform: uppercase;
+    }
+
+    .phone-search {
+      background: #f0f0f0;
+      margin: 10px 12px;
+      padding: 10px 12px;
+      border-radius: 10px;
+      display: flex;
+      gap: 8px;
+      font-size: 11px;
+      color: #999;
+    }
+    .phone-search .icon { color: var(--green); font-weight: 900; }
+
+    .phone-chip-row {
+      display: flex;
+      gap: 6px;
+      padding: 0 12px;
+      margin-bottom: 10px;
+      overflow-x: auto;
+    }
+    .phone-chip {
+      padding: 4px 12px;
+      background: var(--green);
+      color: var(--white);
+      border-radius: 20px;
+      font-size: 9px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .phone-chip:nth-child(2) { background: var(--gold); color: var(--black); }
+    .phone-chip:nth-child(3) { background: var(--red); }
+
+    .phone-products {
+      padding: 0 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      flex: 1;
+    }
+
+    .phone-product {
+      display: flex;
+      gap: 8px;
+      background: #f8f8f8;
+      border-radius: 10px;
+      padding: 8px;
+    }
+    .phone-product .img {
+      width: 44px; height: 44px;
+      background: var(--green);
+      border-radius: 8px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      font-size: 18px;
+    }
+    .phone-product .info {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .phone-product .info .name {
+      font-size: 11px; font-weight: 700;
+    }
+    .phone-product .info .price {
+      font-size: 13px; font-weight: 900; color: var(--red);
+    }
+    .phone-product .info .stores {
+      font-size: 9px; color: #999;
+    }
+    .phone-product .buy {
+      background: var(--green);
+      color: var(--white);
+      border: none;
+      border-radius: 8px;
+      padding: 0 12px;
+      font-size: 9px;
+      font-weight: 700;
+    }
+
+    .phone-bottom-nav {
+      display: flex;
+      border-top: 1px solid #ddd;
+      padding: 6px 0;
+    }
+    .phone-bottom-nav .tab {
+      flex: 1;
+      text-align: center;
+      font-size: 8px;
+      color: #999;
+      font-weight: 700;
+      padding: 4px 0;
+    }
+    .phone-bottom-nav .tab.active { color: var(--green); }
+
+    /* FEATURES */
+    section { padding: 80px 0; border-bottom: 3px solid var(--black); }
+
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .section-label .line { flex: 1; height: 3px; background: var(--black); }
+    .section-label span {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      white-space: nowrap;
+    }
+
+    section h2 {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+    section h2 .green { color: var(--green); }
+    section h2 .gold { color: var(--gold); }
+    section h2 .red { color: var(--red); }
+
+    .section-desc {
+      font-size: 1rem;
+      color: #666;
+      max-width: 600px;
+      margin-bottom: 40px;
+    }
+
+    .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+
+    .feature-card {
+      border: 3px solid var(--black);
+      background: var(--white);
+      padding: 32px;
+      transition: 0.2s;
+    }
+    .feature-card:hover { transform: translate(-4px,-4px); box-shadow: 8px 8px 0 var(--black); }
+
+    .feature-card .icon {
+      font-size: 2rem;
+      margin-bottom: 12px;
+      display: block;
+    }
+    .feature-card h3 { font-size: 1rem; margin-bottom: 8px; }
+    .feature-card p { font-size: 0.88rem; color: #666; line-height: 1.5; }
+
+    /* STORES */
+    .stores-section { background: var(--black); color: var(--white); }
+    .stores-section .section-label span { color: var(--white); }
+    .stores-section .section-label .line { background: var(--white); }
+    .stores-section .section-desc { color: rgba(255,255,255,0.7); }
+
+    .stores-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; }
+
+    .store-badge {
+      border: 2px solid rgba(255,255,255,0.2);
+      padding: 16px;
+      text-align: center;
+      font-weight: 700;
+      font-size: 0.85rem;
+      transition: 0.15s;
+    }
+    .store-badge:hover { border-color: var(--gold); background: rgba(255,182,18,0.05); }
+
+    /* HOW IT WORKS */
+    .steps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+
+    .step-card {
+      border: 3px solid var(--black);
+      background: var(--white);
+      padding: 28px;
+      text-align: center;
+      position: relative;
+    }
+    .step-card .num {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 2.5rem;
+      color: var(--green);
+      opacity: 0.3;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .step-card h3 { font-size: 0.95rem; margin-bottom: 6px; }
+    .step-card p { font-size: 0.85rem; color: #666; }
+
+    /* CTA */
+    .cta-section {
+      background: var(--gold);
+      text-align: center;
+      border-bottom: 3px solid var(--black);
+    }
+    .cta-section h2 { max-width: 100%; }
+    .cta-section p { font-size: 1rem; max-width: 500px; margin: 0 auto 28px; color: #333; }
+    .cta-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .btn-cta { background: var(--black); color: var(--white); border-color: var(--black); }
+    .btn-cta:hover { background: var(--green); border-color: var(--green); transform: translate(-3px,-3px); }
+    .btn-cta2 { background: transparent; color: var(--black); border-color: var(--black); }
+    .btn-cta2:hover { background: var(--black); color: var(--white); transform: translate(-3px,-3px); }
+
+    /* FOOTER */
+    footer {
+      background: var(--black);
+      color: rgba(255,255,255,0.7);
+      padding: 40px 0 20px;
+    }
+    footer .container {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 32px;
+    }
+    footer h4 { font-size: 0.8rem; color: var(--gold); text-transform: uppercase; margin-bottom: 12px; }
+    footer p, footer a { font-size: 0.85rem; color: rgba(255,255,255,0.6); text-decoration: none; display: block; line-height: 1.8; }
+    footer a:hover { color: var(--gold); }
+    footer .brand { font-family: 'Archivo Black', sans-serif; font-size: 1.2rem; color: var(--white); text-transform: uppercase; margin-bottom: 4px; }
+    footer .sub { font-size: 0.7rem; color: var(--gold); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.05em; }
+    footer .bottom {
+      grid-column: 1 / -1;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 16px;
+      margin-top: 16px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    footer .bottom p { font-size: 0.7rem; }
+
+    @media (max-width: 768px) {
+      .hero .container { grid-template-columns: 1fr; }
+      .hero-phone { display: none; }
+      footer .container { grid-template-columns: 1fr; }
+      h1 { font-size: 2.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="flag-strip">
+  <span></span><span></span><span></span><span></span><span></span><span></span>
+</div>
+
+<nav>
+  <div class="container">
+    <a href="#" class="nav-brand">
+      <div class="icon">R</div>
+      <div>
+        <span>Mzansi<br>Price Compare</span>
+        <small>Find the best price</small>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#features">Features</a></li>
+      <li><a href="#how">How It Works</a></li>
+      <li><a href="#stores">Stores</a></li>
+      <li><a href="#download" class="btn-demo">Get the App</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div>
+      <div class="hero-badge">🇿🇦 Built for South Africa</div>
+      <h1>Find the <span class="gold">Best Price</span> Every Time</h1>
+      <div class="hero-sub">Compare prices across SA's top stores</div>
+      <p>
+        Search any product and instantly see prices from Takealot, Makro, Game, 
+        Woolworths, and more. Tap to buy at the best price.
+      </p>
+      <div class="hero-actions">
+        <a href="#download" class="btn btn-gold">Get the App</a>
+        <a href="#features" class="btn btn-outline">See Features</a>
+      </div>
+    </div>
+    <div class="hero-phone">
+      <div class="phone-frame">
+        <div class="screen">
+          <div class="notch"></div>
+          <div class="status-bar">
+            <span>9:41</span>
+            <span>📶 🔋</span>
+          </div>
+          <div class="phone-header">
+            <span class="dot"></span>
+            <span>Mzansi Price Compare</span>
+            <span style="margin-left:auto;">🇿🇦</span>
+          </div>
+          <div class="phone-search">
+            <span class="icon">🔍</span>
+            <span>Search any product...</span>
+          </div>
+          <div class="phone-chip-row">
+            <span class="phone-chip">🔥 Trending</span>
+            <span class="phone-chip">Phones</span>
+            <span class="phone-chip">Fashion</span>
+            <span class="phone-chip">Audio</span>
+          </div>
+          <div class="phone-products">
+            <div class="phone-product">
+              <div class="img">📱</div>
+              <div class="info">
+                <div class="name">iPhone 15 Pro Max</div>
+                <div class="price">R26,999</div>
+                <div class="stores">4 stores</div>
+              </div>
+              <button class="buy">Buy</button>
+            </div>
+            <div class="phone-product">
+              <div class="img" style="background:var(--blue);">👟</div>
+              <div class="info">
+                <div class="name">Nike Air Max 270</div>
+                <div class="price">R2,499</div>
+                <div class="stores">3 stores</div>
+              </div>
+              <button class="buy">Buy</button>
+            </div>
+            <div class="phone-product">
+              <div class="img" style="background:var(--gold);color:var(--black);">🎧</div>
+              <div class="info">
+                <div class="name">Sony WH-1000XM5</div>
+                <div class="price">R4,299</div>
+                <div class="stores">5 stores</div>
+              </div>
+              <button class="buy">Buy</button>
+            </div>
+            <div class="phone-product">
+              <div class="img" style="background:var(--red);">💻</div>
+              <div class="info">
+                <div class="name">MacBook Air M3</div>
+                <div class="price">R19,999</div>
+                <div class="stores">3 stores</div>
+              </div>
+              <button class="buy">Buy</button>
+            </div>
+          </div>
+          <div style="flex:1;"></div>
+          <div class="phone-bottom-nav">
+            <div class="tab active">🏠 Home</div>
+            <div class="tab">🔍 Search</div>
+            <div class="tab">❤️ Saved</div>
+            <div class="tab">👤 Profile</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features">
+  <div class="container">
+    <div class="section-label">
+      <span>Features</span>
+      <div class="line"></div>
+    </div>
+    <h2>Everything You Need to <span class="green">Save Money</span></h2>
+    <p class="section-desc">
+      Mzansi Price Compare makes it easy to find the best deal before you buy.
+    </p>
+    <div class="features-grid">
+      <div class="feature-card">
+        <span class="icon">🔍</span>
+        <h3>Search Any Product</h3>
+        <p>Type a product name or use voice search. We scan SA's top stores for the best prices instantly.</p>
+      </div>
+      <div class="feature-card">
+        <span class="icon">📊</span>
+        <h3>Compare Prices</h3>
+        <p>See all prices side-by-side. Know exactly who has the best deal before you buy.</p>
+      </div>
+      <div class="feature-card">
+        <span class="icon">🔗</span>
+        <h3>Tap to Buy</h3>
+        <p>Found the right price? One tap takes you directly to the store's website to complete your purchase.</p>
+      </div>
+      <div class="feature-card">
+        <span class="icon">❤️</span>
+        <h3>Save Favourites</h3>
+        <p>Save products to track prices. Get notified when the price drops on items you want.</p>
+      </div>
+      <div class="feature-card">
+        <span class="icon">🎤</span>
+        <h3>Voice Search</h3>
+        <p>Don't feel like typing? Just speak the product name and we'll find it for you.</p>
+      </div>
+      <div class="feature-card">
+        <span class="icon">🇿🇦</span>
+        <h3>Built for SA</h3>
+        <p>All prices in Rands. All stores are South African. Designed for how you shop.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div class="container">
+    <div class="section-label">
+      <span>How It Works</span>
+      <div class="line"></div>
+    </div>
+    <h2>Three Steps to <span class="gold">Save</span></h2>
+    <p class="section-desc">Using Mzansi Price Compare is as easy as 1-2-3.</p>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="num">01</div>
+        <h3>Search</h3>
+        <p>Type or speak any product name — from smartphones to sneakers.</p>
+      </div>
+      <div class="step-card">
+        <div class="num">02</div>
+        <h3>Compare</h3>
+        <p>See prices from Takealot, Makro, Game, and more in one view.</p>
+      </div>
+      <div class="step-card">
+        <div class="num">03</div>
+        <h3>Buy</h3>
+        <p>Tap the best price and we'll take you straight to the checkout.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STORES -->
+<section class="stores-section" id="stores">
+  <div class="container">
+    <div class="section-label">
+      <span>Supported Stores</span>
+      <div class="line"></div>
+    </div>
+    <h2>Compare Prices Across <span style="color:var(--gold);">SA's Top Stores</span></h2>
+    <p class="section-desc">
+      We aggregate prices from all the major South African online retailers so you don't have to check each one.
+    </p>
+    <div class="stores-grid">
+      <div class="store-badge">🏪 Takealot</div>
+      <div class="store-badge">🛒 Makro</div>
+      <div class="store-badge">🎮 Game</div>
+      <div class="store-badge">👗 Woolworths</div>
+      <div class="store-badge">💻 Incredible Connection</div>
+      <div class="store-badge">🔊 HiFi Corp</div>
+      <div class="store-badge">📱 DionWired</div>
+      <div class="store-badge">📚 Loot</div>
+      <div class="store-badge">👟 Superbalist</div>
+      <div class="store-badge">👕 Zando</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="download">
+  <div class="container">
+    <h2>Start Saving <span class="green">Today</span></h2>
+    <p>Download Mzansi Price Compare and never overpay for a product again.</p>
+    <div class="cta-actions">
+      <a href="#" class="btn btn-cta">📱 Android App</a>
+      <a href="https://skylineit.site" class="btn btn-cta2" target="_blank">🌐 Visit Skyline IT</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div>
+      <div class="brand">Mzansi Price Compare</div>
+      <div class="sub">A Skyline IT &amp; Cloud Company</div>
+      <p style="max-width:300px;">Find the best price across South Africa's top online stores. Every time.</p>
+    </div>
+    <div>
+      <h4>Quick Links</h4>
+      <a href="#features">Features</a>
+      <a href="#how">How It Works</a>
+      <a href="#stores">Supported Stores</a>
+      <a href="#download">Get the App</a>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <a href="mailto:projectpstg@gmail.com">projectpstg@gmail.com</a>
+      <a href="https://skylineit.site" target="_blank">Skyline IT &amp; Cloud</a>
+      <p>Durban, South Africa</p>
+    </div>
+    <div class="bottom">
+      <p>&copy; 2026 Mzansi Price Compare. A division of Skyline IT &amp; Cloud.</p>
+      <p>🇿🇦 Made in South Africa</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

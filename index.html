@@ -1,0 +1,1223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mzansi Connect — Smart Technology for Every South African</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;900&family=Archivo+Black&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="Logo.png">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --sa-green: #007A4B;
+      --sa-gold: #FFB612;
+      --sa-red: #DE3831;
+      --sa-blue: #002395;
+      --sa-black: #000000;
+      --sa-white: #FFFFFF;
+      --black: #0A0A0A;
+      --dark: #1A1A1A;
+      --gray-900: #2A2A2A;
+      --gray-700: #555;
+      --gray-300: #CCC;
+      --gray-100: #F5F5F5;
+      --brutal-border: 4px solid var(--black);
+      --brutal-border-white: 4px solid var(--sa-white);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+      background: var(--sa-white);
+      color: var(--black);
+      line-height: 1.4;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4 { font-family: 'Archivo Black', sans-serif; text-transform: uppercase; letter-spacing: -0.02em; }
+
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+    /* ─── BRUTALIST BADGE ─── */
+    .badge {
+      display: inline-block;
+      padding: 6px 16px;
+      border: var(--brutal-border);
+      background: var(--sa-gold);
+      color: var(--black);
+      font-weight: 700;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 16px;
+    }
+
+    .badge-green { background: var(--sa-green); color: var(--sa-white); }
+    .badge-red { background: var(--sa-red); color: var(--sa-white); }
+    .badge-blue { background: var(--sa-blue); color: var(--sa-white); }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: var(--sa-white);
+      border-bottom: var(--brutal-border);
+      padding: 12px 0;
+    }
+
+    nav .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--black);
+    }
+
+    .nav-logo img, .nav-logo svg {
+      width: 42px;
+      height: 42px;
+      flex-shrink: 0;
+    }
+
+    .nav-logo span {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 1.2rem;
+      text-transform: uppercase;
+      line-height: 1;
+    }
+
+    .nav-logo small {
+      display: block;
+      font-size: 0.55rem;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 500;
+      text-transform: none;
+      letter-spacing: 0.05em;
+      color: var(--gray-700);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      padding: 8px 14px;
+      border: 2px solid transparent;
+      color: var(--black);
+      transition: 0.15s;
+    }
+
+    .nav-links a:hover { border-color: var(--black); }
+
+    .nav-cta {
+      background: var(--sa-black) !important;
+      color: var(--sa-white) !important;
+      border-color: var(--sa-black) !important;
+    }
+
+    .nav-cta:hover { background: var(--sa-green) !important; border-color: var(--sa-green) !important; }
+
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .hamburger span { display: block; width: 28px; height: 3px; background: var(--black); }
+
+    /* ─── HERO ─── */
+    .hero {
+      padding: 140px 0 80px;
+      background: var(--sa-black);
+      color: var(--sa-white);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 40px,
+        rgba(255,255,255,0.02) 40px,
+        rgba(255,255,255,0.02) 80px
+      );
+      pointer-events: none;
+    }
+
+    .hero .container { position: relative; z-index: 1; }
+
+    .hero-badge {
+      display: inline-block;
+      padding: 8px 20px;
+      background: var(--sa-green);
+      color: var(--sa-white);
+      border: 3px solid var(--sa-white);
+      font-weight: 700;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 {
+      font-size: clamp(3rem, 10vw, 7rem);
+      line-height: 0.95;
+      margin-bottom: 8px;
+    }
+
+    .hero h1 .highlight { color: var(--sa-gold); }
+
+    .hero-sub {
+      font-size: clamp(1.2rem, 3vw, 2rem);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--sa-gold);
+      margin-bottom: 24px;
+    }
+
+    .hero p {
+      font-size: 1.15rem;
+      max-width: 680px;
+      color: rgba(255,255,255,0.8);
+      line-height: 1.6;
+      margin-bottom: 32px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 36px;
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: 3px solid var(--black);
+      cursor: pointer;
+      transition: 0.15s;
+    }
+
+    .btn-white { background: var(--sa-white); color: var(--black); }
+    .btn-white:hover { background: var(--sa-gold); transform: translate(-3px, -3px); }
+
+    .btn-gold { background: var(--sa-gold); color: var(--black); }
+    .btn-gold:hover { background: var(--sa-green); color: var(--sa-white); transform: translate(-3px, -3px); }
+
+    .btn-outline-white { background: transparent; color: var(--sa-white); border-color: var(--sa-white); }
+    .btn-outline-white:hover { background: var(--sa-white); color: var(--black); transform: translate(-3px, -3px); }
+
+    .hero-stat {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      border: 2px solid rgba(255,255,255,0.3);
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .hero-stat strong {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 1.4rem;
+      color: var(--sa-gold);
+    }
+
+    /* ─── FLAG STRIP ─── */
+    .flag-strip {
+      display: flex;
+      height: 8px;
+      width: 100%;
+    }
+    .flag-strip span { flex: 1; }
+    .flag-strip span:nth-child(1) { background: var(--sa-green); }
+    .flag-strip span:nth-child(2) { background: var(--sa-gold); }
+    .flag-strip span:nth-child(3) { background: var(--sa-red); }
+    .flag-strip span:nth-child(4) { background: var(--sa-blue); }
+    .flag-strip span:nth-child(5) { background: var(--sa-black); }
+    .flag-strip span:nth-child(6) { background: var(--sa-white); }
+
+    /* ─── SECTION BASE ─── */
+    section { padding: 80px 0; border-bottom: var(--brutal-border); }
+
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .section-label .line {
+      flex: 1;
+      height: 4px;
+      background: var(--black);
+    }
+
+    .section-label span {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      white-space: nowrap;
+    }
+
+    section h2 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      line-height: 1;
+      margin-bottom: 20px;
+      max-width: 800px;
+    }
+
+    section h2 .highlight-green { color: var(--sa-green); }
+    section h2 .highlight-gold { color: var(--sa-gold); }
+    section h2 .highlight-red { color: var(--sa-red); }
+    section h2 .highlight-blue { color: var(--sa-blue); }
+
+    .section-desc {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      max-width: 680px;
+      color: var(--gray-700);
+      margin-bottom: 40px;
+    }
+
+    /* ─── PROBLEM / SOLUTION ─── */
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+
+    .problem-box {
+      border: var(--brutal-border);
+      background: var(--sa-white);
+      padding: 36px;
+    }
+
+    .problem-box.red { border-color: var(--sa-red); background: #FFF5F5; }
+    .problem-box.green { border-color: var(--sa-green); background: #F0FFF5; }
+    .problem-box.blue { border-color: var(--sa-blue); background: #F0F5FF; }
+    .problem-box.gold { border-color: var(--sa-gold); background: #FFFEF0; }
+
+    .problem-box h3 {
+      font-size: 1.4rem;
+      margin-bottom: 16px;
+    }
+
+    .problem-box ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .problem-box ul li {
+      padding-left: 24px;
+      position: relative;
+      font-weight: 500;
+    }
+
+    .problem-box ul li::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      font-weight: 900;
+    }
+
+    .problem-box.red ul li::before { color: var(--sa-red); }
+    .problem-box.green ul li::before { color: var(--sa-green); }
+
+    /* ─── PRODUCT GRID ─── */
+    .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+
+    .product-card {
+      border: var(--brutal-border);
+      background: var(--sa-white);
+      padding: 32px;
+      transition: 0.2s;
+      position: relative;
+    }
+
+    .product-card:hover { transform: translate(-4px, -4px); box-shadow: 8px 8px 0 var(--black); }
+
+    .product-card .card-icon {
+      font-size: 2.5rem;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .product-card h3 {
+      font-size: 1.15rem;
+      margin-bottom: 12px;
+    }
+
+    .product-card .card-badge {
+      display: inline-block;
+      padding: 3px 10px;
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      border: 2px solid var(--black);
+      margin-bottom: 12px;
+    }
+
+    .product-card .card-badge.green { background: var(--sa-green); color: var(--sa-white); border-color: var(--sa-green); }
+    .product-card .card-badge.gold { background: var(--sa-gold); }
+    .product-card .card-badge.red { background: var(--sa-red); color: var(--sa-white); border-color: var(--sa-red); }
+    .product-card .card-badge.blue { background: var(--sa-blue); color: var(--sa-white); border-color: var(--sa-blue); }
+
+    .product-card ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 16px;
+    }
+
+    .product-card ul li {
+      font-size: 0.88rem;
+      padding-left: 20px;
+      position: relative;
+    }
+
+    .product-card ul li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      font-weight: 900;
+      color: var(--sa-green);
+    }
+
+    .product-card .benefits {
+      border-top: 2px solid var(--gray-300);
+      padding-top: 12px;
+      margin-top: 12px;
+    }
+
+    .product-card .benefits strong {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .product-card .benefits ul li::before { content: '→'; color: var(--sa-gold); }
+
+    /* ─── GROUNDBREAKING ─── */
+    .ground-section {
+      background: var(--sa-black);
+      color: var(--sa-white);
+      border-bottom: var(--brutal-border);
+    }
+
+    .ground-section h2 { color: var(--sa-white); }
+    .ground-section .section-desc { color: rgba(255,255,255,0.7); }
+    .ground-section .section-label span { color: var(--sa-white); }
+    .ground-section .section-label .line { background: var(--sa-white); }
+
+    .idea-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+
+    .idea-card {
+      border: 3px solid rgba(255,255,255,0.2);
+      padding: 32px;
+      transition: 0.2s;
+    }
+
+    .idea-card:hover { border-color: var(--sa-gold); background: rgba(255,182,18,0.05); }
+
+    .idea-card .idea-icon { font-size: 2rem; margin-bottom: 12px; display: block; }
+    .idea-card h3 { font-size: 1.1rem; margin-bottom: 8px; color: var(--sa-gold); }
+
+    .idea-card .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin: 12px 0;
+    }
+
+    .idea-card .tags span {
+      padding: 3px 10px;
+      border: 1px solid rgba(255,255,255,0.3);
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .idea-card p { font-size: 0.9rem; color: rgba(255,255,255,0.7); line-height: 1.5; }
+
+    /* ─── ECOSYSTEM ─── */
+    .eco-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+
+    .eco-card {
+      border: var(--brutal-border);
+      background: var(--sa-white);
+      padding: 36px;
+      text-align: center;
+      transition: 0.2s;
+    }
+
+    .eco-card:hover { transform: scale(1.02); }
+
+    .eco-card .eco-icon {
+      font-size: 3rem;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .eco-card h3 { font-size: 1.3rem; margin-bottom: 8px; }
+
+    .eco-card p { font-size: 0.95rem; color: var(--gray-700); line-height: 1.5; }
+
+    /* ─── IMPACT ─── */
+    .impact-strip {
+      background: var(--sa-green);
+      color: var(--sa-white);
+      border-bottom: var(--brutal-border);
+    }
+
+    .impact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 24px; }
+
+    .impact-item {
+      border: 3px solid var(--sa-white);
+      padding: 32px 24px;
+      text-align: center;
+    }
+
+    .impact-item .impact-num {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 3rem;
+      color: var(--sa-gold);
+      margin-bottom: 4px;
+    }
+
+    .impact-item p {
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      letter-spacing: 0.05em;
+    }
+
+    /* ─── VISION ─── */
+    .vision-section {
+      background: var(--sa-blue);
+      color: var(--sa-white);
+    }
+
+    .vision-section h2 { color: var(--sa-white); }
+    .vision-section .section-desc { color: rgba(255,255,255,0.7); }
+
+    .vision-block {
+      border: 3px solid rgba(255,255,255,0.3);
+      padding: 40px;
+      margin-top: 36px;
+      position: relative;
+    }
+
+    .vision-block::before {
+      content: '"';
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 6rem;
+      position: absolute;
+      top: -10px;
+      left: 16px;
+      color: var(--sa-gold);
+      opacity: 0.5;
+      line-height: 1;
+    }
+
+    .vision-block p {
+      font-size: 1.3rem;
+      line-height: 1.5;
+      max-width: 700px;
+      font-weight: 500;
+    }
+
+    .vision-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+      margin-top: 36px;
+    }
+
+    .vision-item {
+      border: 3px solid rgba(255,255,255,0.2);
+      padding: 20px;
+      text-align: center;
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      letter-spacing: 0.03em;
+    }
+
+    .vision-item:hover { border-color: var(--sa-gold); background: rgba(255,182,18,0.08); }
+
+    /* ─── CTA ─── */
+    .cta-section {
+      background: var(--sa-gold);
+      text-align: center;
+      border-bottom: var(--brutal-border);
+    }
+
+    .cta-section h2 { max-width: 100%; }
+    .cta-section p { font-size: 1.1rem; max-width: 600px; margin: 0 auto 32px; }
+
+    .cta-actions { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; }
+
+    .btn-cta-black { background: var(--sa-black); color: var(--sa-white); border-color: var(--sa-black); }
+    .btn-cta-black:hover { background: var(--sa-green); border-color: var(--sa-green); transform: translate(-3px, -3px); }
+
+    .btn-cta-outline { background: transparent; color: var(--sa-black); border-color: var(--sa-black); }
+    .btn-cta-outline:hover { background: var(--sa-black); color: var(--sa-white); transform: translate(-3px, -3px); }
+
+    .contact-form { max-width: 640px; margin: 32px auto 0; text-align: left; }
+    .contact-form .form-row { display: flex; gap: 16px; }
+    .contact-form .form-row input { flex: 1; }
+    .contact-form input, .contact-form textarea {
+      width: 100%;
+      padding: 14px 18px;
+      border: 3px solid var(--black);
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.95rem;
+      background: var(--sa-white);
+      color: var(--black);
+      margin-bottom: 16px;
+      box-sizing: border-box;
+    }
+    .contact-form input:focus, .contact-form textarea:focus {
+      outline: none;
+      border-color: var(--sa-green);
+    }
+    .contact-form .form-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+    .contact-form .form-status {
+      margin-top: 12px;
+      font-weight: 700;
+      font-size: 0.85rem;
+    }
+    .contact-form .form-status.success { color: var(--sa-green); }
+    .contact-form .form-status.error { color: var(--sa-red); }
+
+    @media (max-width: 480px) {
+      .contact-form .form-row { flex-direction: column; gap: 0; }
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--sa-black);
+      color: var(--sa-white);
+      padding: 48px 0 24px;
+    }
+
+    footer .container {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 48px;
+    }
+
+    footer h4 { font-size: 0.85rem; margin-bottom: 16px; color: var(--sa-gold); }
+
+    footer p, footer a {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      display: block;
+      line-height: 1.8;
+    }
+
+    footer a:hover { color: var(--sa-gold); }
+
+    footer .footer-brand {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 1.3rem;
+      text-transform: uppercase;
+      color: var(--sa-white);
+      margin-bottom: 8px;
+    }
+
+    footer .footer-subsidiary {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--sa-gold);
+      margin-bottom: 12px;
+    }
+
+    footer .footer-bottom {
+      grid-column: 1 / -1;
+      border-top: 2px solid rgba(255,255,255,0.15);
+      padding-top: 20px;
+      margin-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    footer .footer-bottom p { font-size: 0.75rem; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 768px) {
+      .hamburger { display: flex; }
+      .nav-links { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: var(--sa-white); border-bottom: var(--brutal-border); padding: 16px 24px; }
+      .nav-links.open { display: flex; }
+      .two-col { grid-template-columns: 1fr; }
+      footer .container { grid-template-columns: 1fr; }
+      .hero { padding: 120px 0 60px; }
+      section { padding: 60px 0; }
+    }
+
+    @media (max-width: 480px) {
+      .container { padding: 0 16px; }
+      .hero h1 { font-size: 2.5rem; }
+      .product-grid { grid-template-columns: 1fr; }
+      .impact-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─── FLAG STRIP TOP ─── -->
+  <div class="flag-strip" style="position:fixed;top:0;left:0;right:0;z-index:1001;">
+    <span></span><span></span><span></span><span></span><span></span><span></span>
+  </div>
+
+  <!-- ─── NAV ─── -->
+  <nav style="top:8px;">
+    <div class="container">
+      <a href="#" class="nav-logo">
+        <img src="Logo.png" alt="Mzansi Connect" style="width:83px;height:83px;object-fit:contain;flex-shrink:0;">
+        <div>
+          <span>Mzansi<br>Connect</span>
+          <small>Skyline IT Company</small>
+        </div>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#products">Products</a></li>
+        <li><a href="#ideas">Innovations</a></li>
+        <li><a href="#ecosystem">Ecosystem</a></li>
+        <li><a href="#vision">Vision</a></li>
+        <li><a href="#contact" class="nav-cta">Contact</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ─── HERO ─── -->
+  <section class="hero" id="home">
+    <div class="container">
+      <div class="hero-badge">A Skyline IT &amp; Cloud Company</div>
+      <h1>
+        Connecting<br>
+        <span class="highlight">South Africa</span><br>
+        to the Future
+      </h1>
+      <div class="hero-sub">Smart Technology for Every South African</div>
+      <p>
+        Mzansi Connect makes IoT affordable, practical, and accessible — bringing smart technology 
+        to townships, rural communities, small businesses, schools, and entrepreneurs.
+      </p>
+      <div class="hero-actions">
+        <a href="#products" class="btn btn-gold">Explore Products</a>
+        <a href="#ecosystem" class="btn btn-outline-white">Our Ecosystem</a>
+      </div>
+      <div class="hero-stat">
+        <strong>2025</strong> Founded · Durban, SA
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FLAG STRIP ─── -->
+  <div class="flag-strip"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+
+  <!-- ─── PROBLEM + SOLUTION ─── -->
+  <section id="about">
+    <div class="container">
+      <div class="section-label">
+        <span>The Challenge</span>
+        <div class="line"></div>
+      </div>
+      <h2>Why <span class="highlight-red">Mzansi Connect</span> Exists</h2>
+      <p class="section-desc">
+        Millions of South Africans face real daily challenges that technology could solve — but existing 
+        solutions are expensive, imported, and designed for foreign markets. We're changing that.
+      </p>
+      <div class="two-col">
+        <div class="problem-box red">
+          <h3>The Problem</h3>
+          <ul>
+            <li>High electricity costs</li>
+            <li>Water wastage</li>
+            <li>Crime and theft</li>
+            <li>Limited access to technology</li>
+            <li>Poor business monitoring tools</li>
+            <li>Lack of affordable automation</li>
+          </ul>
+        </div>
+        <div class="problem-box green">
+          <h3>Our Solution</h3>
+          <ul>
+            <li>Low-cost ESP32-powered devices</li>
+            <li>WiFi, LoRa &amp; GSM connectivity</li>
+            <li>Solar-powered systems</li>
+            <li>Cloud dashboards &amp; mobile apps</li>
+            <li>Built for South African realities</li>
+            <li>Affordable for everyone</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── PRODUCTS ─── -->
+  <section id="products">
+    <div class="container">
+      <div class="section-label">
+        <span>Our Products</span>
+        <div class="line"></div>
+      </div>
+      <h2>Smart Devices for <span class="highlight-green">Real Life</span></h2>
+      <p class="section-desc">
+        Practical, low-cost IoT solutions designed for South African homes, businesses, and communities.
+      </p>
+      <div class="product-grid">
+        <div class="product-card">
+          <span class="card-icon">🔒</span>
+          <span class="card-badge red">Popular</span>
+          <h3>Smart Spaza Shop Security</h3>
+          <ul>
+            <li>Motion detection</li>
+            <li>Door opening alerts</li>
+            <li>SMS notifications</li>
+            <li>Power outage alerts</li>
+            <li>Panic button</li>
+          </ul>
+          <div class="benefits">
+            <strong>Benefits</strong>
+            <ul>
+              <li>Reduces theft</li>
+              <li>Protects stock</li>
+              <li>Peace of mind</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <span class="card-icon">💧</span>
+          <span class="card-badge blue">New</span>
+          <h3>Smart Water Tank Monitor</h3>
+          <ul>
+            <li>Water level monitoring</li>
+            <li>Leak detection</li>
+            <li>Overflow alerts</li>
+            <li>Mobile notifications</li>
+          </ul>
+          <div class="benefits">
+            <strong>Benefits</strong>
+            <ul>
+              <li>Saves water</li>
+              <li>Prevents shortages</li>
+              <li>Reduces maintenance</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <span class="card-icon">⚡</span>
+          <span class="card-badge gold">Best Seller</span>
+          <h3>Kasi Smart Electricity Monitor</h3>
+          <ul>
+            <li>Daily usage reports</li>
+            <li>High usage alerts</li>
+            <li>Prepaid meter monitoring</li>
+            <li>Appliance tracking</li>
+          </ul>
+          <div class="benefits">
+            <strong>Benefits</strong>
+            <ul>
+              <li>Reduces electricity bills</li>
+              <li>Helps families budget</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <span class="card-icon">🏠</span>
+          <span class="card-badge green">Smart</span>
+          <h3>Smart Rental Room Manager</h3>
+          <ul>
+            <li>Electricity monitoring</li>
+            <li>Water monitoring</li>
+            <li>Occupancy detection</li>
+            <li>Tenant usage reports</li>
+          </ul>
+          <div class="benefits">
+            <strong>Benefits</strong>
+            <ul>
+              <li>Easier property management</li>
+              <li>Reduced disputes</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="product-card" style="grid-column: span 1;">
+          <span class="card-icon">🚖</span>
+          <span class="card-badge blue">Fleet</span>
+          <h3>Taxi Fleet Tracker</h3>
+          <ul>
+            <li>Live GPS tracking</li>
+            <li>Driver behavior monitoring</li>
+            <li>Vehicle health alerts</li>
+            <li>Fuel monitoring</li>
+          </ul>
+          <div class="benefits">
+            <strong>Benefits</strong>
+            <ul>
+              <li>Improved safety</li>
+              <li>Reduced fuel theft</li>
+              <li>Better route management</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── GROUNDBREAKING IDEAS ─── -->
+  <section class="ground-section" id="ideas">
+    <div class="container">
+      <div class="section-label">
+        <span>Groundbreaking</span>
+        <div class="line" style="background:var(--sa-white);"></div>
+      </div>
+      <h2>Ideas That <span style="color:var(--sa-gold);">Change Everything</span></h2>
+      <p class="section-desc">
+        Beyond products — these are the innovations that will reshape townships and communities across South Africa.
+      </p>
+      <div class="idea-grid">
+        <div class="idea-card">
+          <span class="idea-icon">🌐</span>
+          <h3>Smart Street Pole Network</h3>
+          <div class="tags">
+            <span>Public WiFi</span>
+            <span>Security Cameras</span>
+            <span>Emergency</span>
+          </div>
+          <p>Solar-powered IoT nodes on township streets providing WiFi, surveillance, and emergency buttons — without requiring major government investment.</p>
+        </div>
+
+        <div class="idea-card">
+          <span class="idea-icon">📡</span>
+          <h3>Community Mesh Internet</h3>
+          <div class="tags">
+            <span>Decentralized</span>
+            <span>Low-Cost</span>
+            <span>Community-Owned</span>
+          </div>
+          <p>Homes share connectivity through rooftop wireless nodes, lowering internet costs and putting ownership in the hands of the community.</p>
+        </div>
+
+        <div class="idea-card">
+          <span class="idea-icon">📦</span>
+          <h3>Smart Container Business Hub</h3>
+          <div class="tags">
+            <span>Solar Power</span>
+            <span>Smart Security</span>
+            <span>WiFi Hotspot</span>
+          </div>
+          <p>Transform shipping containers into solar-powered smart business centres — internet cafes, tech hubs, spaza shops, and community centres.</p>
+        </div>
+
+        <div class="idea-card">
+          <span class="idea-icon">📚</span>
+          <h3>Smart School Kit</h3>
+          <div class="tags">
+            <span>Attendance</span>
+            <span>Smart Bell</span>
+            <span>Security</span>
+          </div>
+          <p>An affordable technology package for schools including attendance tracking, environmental monitoring, smart bell system, and security alerts.</p>
+        </div>
+
+        <div class="idea-card">
+          <span class="idea-icon">🐄</span>
+          <h3>Digital Livestock Tracker</h3>
+          <div class="tags">
+            <span>GPS Tracking</span>
+            <span>Health Monitoring</span>
+            <span>Theft Prevention</span>
+          </div>
+          <p>For emerging farmers — GPS tracking, health monitoring, theft prevention, and water monitoring to significantly reduce livestock theft.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── ECOSYSTEM ─── -->
+  <section id="ecosystem">
+    <div class="container">
+      <div class="section-label">
+        <span>The Ecosystem</span>
+        <div class="line"></div>
+      </div>
+      <h2>More Than <span class="highlight-gold">Devices</span></h2>
+      <p class="section-desc">
+        Mzansi Connect is a complete ecosystem — an app, cloud platform, and marketplace working together to empower communities.
+      </p>
+      <div class="eco-grid">
+        <div class="eco-card">
+          <span class="eco-icon">📱</span>
+          <h3>Mzansi Connect App</h3>
+          <p>View device data, receive real-time alerts, track energy usage, monitor security systems, and manage subscriptions — all from your phone.</p>
+        </div>
+        <div class="eco-card">
+          <span class="eco-icon">☁️</span>
+          <h3>Mzansi Cloud</h3>
+          <p>Secure cloud platform storing customer information and device analytics with real-time dashboards and historical reporting.</p>
+        </div>
+        <div class="eco-card">
+          <span class="eco-icon">🏪</span>
+          <h3>Mzansi Marketplace</h3>
+          <p>A platform where local technicians can install devices, provide support, and earn income — creating jobs while expanding technology access.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── IMPACT ─── -->
+  <section class="impact-strip">
+    <div class="container">
+      <div class="section-label">
+        <span style="color:var(--sa-white);">Economic Impact</span>
+        <div class="line" style="background:var(--sa-white);"></div>
+      </div>
+      <h2>Building a <span style="color:var(--sa-gold);">Digital Economy</span></h2>
+      <p class="section-desc" style="color:rgba(255,255,255,0.8);">
+        Mzansi Connect is more than a technology company — it is an economic empowerment platform.
+      </p>
+      <div class="impact-grid">
+        <div class="impact-item">
+          <div class="impact-num">01</div>
+          <p>Train Township Technicians</p>
+        </div>
+        <div class="impact-item">
+          <div class="impact-num">02</div>
+          <p>Create Youth Employment</p>
+        </div>
+        <div class="impact-item">
+          <div class="impact-num">03</div>
+          <p>Support Local Manufacturing</p>
+        </div>
+        <div class="impact-item">
+          <div class="impact-num">04</div>
+          <p>Promote Digital Inclusion</p>
+        </div>
+        <div class="impact-item">
+          <div class="impact-num">05</div>
+          <p>Grow SA's Tech Sector</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── VISION ─── -->
+  <section class="vision-section" id="vision">
+    <div class="container">
+      <div class="section-label">
+        <span>Long-Term Vision</span>
+        <div class="line" style="background:var(--sa-white);"></div>
+      </div>
+      <h2>Africa's Leading <span style="color:var(--sa-gold);">Affordable IoT</span> Provider</h2>
+      <p class="section-desc">
+        By 2035, we will have transformed how South Africans live, learn, and do business.
+      </p>
+      <div class="vision-block">
+        <p>
+          <strong style="color: var(--sa-gold);">"Technology built by Africans for Africans."</strong><br><br>
+          We envision smart townships, connected schools, automated small businesses, and digitally empowered 
+          communities — all powered by technology designed for and by South Africans.
+        </p>
+      </div>
+      <div class="vision-grid">
+        <div class="vision-item">
+          <span style="display:block;font-size:1.8rem;margin-bottom:6px;">🏙️</span>
+          Smart Townships
+        </div>
+        <div class="vision-item">
+          <span style="display:block;font-size:1.8rem;margin-bottom:6px;">🏫</span>
+          Connected Schools
+        </div>
+        <div class="vision-item">
+          <span style="display:block;font-size:1.8rem;margin-bottom:6px;">🏪</span>
+          Automated Small Businesses
+        </div>
+        <div class="vision-item">
+          <span style="display:block;font-size:1.8rem;margin-bottom:6px;">👩‍💻</span>
+          Empowered Communities
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── CTA / CONTACT ─── -->
+  <section class="cta-section" id="contact">
+    <div class="container">
+      <h2>Ready to <span class="highlight-green">Connect</span>?</h2>
+      <p>
+        Let's build a smarter South Africa together. Get in touch for partnerships, product inquiries, 
+        or to join the Mzansi Connect ecosystem.
+      </p>
+      <form id="contactForm" class="contact-form">
+        <div class="form-row">
+          <input type="text" name="name" placeholder="Your Name" required maxlength="100">
+          <input type="email" name="email" placeholder="Your Email" required>
+        </div>
+        <input type="text" name="company" placeholder="Company (optional)" maxlength="200">
+        <textarea name="message" placeholder="Tell us about your project..." required maxlength="2000" rows="4"></textarea>
+        <div class="form-actions">
+          <button type="submit" class="btn btn-cta-black">Send Message</button>
+          <a href="https://skylineit.site" class="btn btn-cta-outline" target="_blank">Visit Skyline IT</a>
+        </div>
+        <p class="form-status" id="formStatus"></p>
+      </form>
+    </div>
+  </section>
+
+  <!-- ─── FOOTER ─── -->
+  <footer>
+    <div class="container">
+      <div>
+        <div class="footer-logo-wrap" style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
+          <img src="Logo.png" alt="Mzansi Connect" style="width:52px;height:52px;object-fit:contain;flex-shrink:0;">
+          <div>
+            <div class="footer-brand">Mzansi Connect</div>
+            <div class="footer-subsidiary">A Skyline IT &amp; Cloud Company</div>
+          </div>
+        </div>
+        <p style="max-width:320px;">
+          Connecting South Africa to the Future — making IoT affordable, practical, and accessible 
+          for every South African.
+        </p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <a href="#products">Products</a>
+        <a href="#ideas">Innovations</a>
+        <a href="#ecosystem">Ecosystem</a>
+        <a href="#vision">Vision</a>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <a href="mailto:projectpstg@gmail.com">projectpstg@gmail.com</a>
+        <a href="https://skylineit.site" target="_blank">Skyline IT &amp; Cloud</a>
+        <p>Durban, South Africa</p>
+      </div>
+      <div>
+        <h4>Stay Updated</h4>
+        <form id="subscribeForm" style="display:flex;gap:8px;flex-wrap:wrap;">
+          <input type="email" name="email" placeholder="Your Email" required style="flex:1;min-width:160px;padding:10px 14px;border:2px solid rgba(255,255,255,0.3);background:transparent;color:var(--sa-white);font-family:'Space Grotesk',sans-serif;font-size:0.85rem;">
+          <button type="submit" style="padding:10px 18px;border:2px solid var(--sa-gold);background:var(--sa-gold);color:var(--black);font-family:'Archivo Black',sans-serif;font-size:0.7rem;text-transform:uppercase;cursor:pointer;">Subscribe</button>
+        </form>
+        <p id="subscribeStatus" style="font-size:0.75rem;margin-top:8px;"></p>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Mzansi Connect. A division of Skyline IT &amp; Cloud.</p>
+        <p>Motto: <em>"Connecting Every South African to the Future."</em></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ─── MOBILE MENU ─── -->
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+    });
+
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+      });
+    });
+
+    const apiBase = window.location.origin;
+
+    document.getElementById('contactForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const form = e.target;
+      const status = document.getElementById('formStatus');
+      const data = {
+        name: form.name.value.trim(),
+        email: form.email.value.trim(),
+        company: form.company.value.trim(),
+        message: form.message.value.trim(),
+      };
+      try {
+        const res = await fetch(apiBase + '/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data),
+        });
+        const json = await res.json();
+        if (res.ok) {
+          status.className = 'form-status success';
+          status.textContent = 'Message sent! We\'ll be in touch.';
+          form.reset();
+        } else {
+          status.className = 'form-status error';
+          status.textContent = json.errors ? json.errors.map(e => e.msg).join(', ') : json.error || 'Something went wrong.';
+        }
+      } catch {
+        status.className = 'form-status error';
+        status.textContent = 'Connection error. Make sure the server is running.';
+      }
+    });
+
+    document.getElementById('subscribeForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const form = e.target;
+      const status = document.getElementById('subscribeStatus');
+      try {
+        const res = await fetch(apiBase + '/api/subscribe', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: form.email.value.trim() }),
+        });
+        const json = await res.json();
+        status.style.color = res.ok ? 'var(--sa-green)' : 'var(--sa-red)';
+        status.textContent = json.message || 'Done.';
+        if (res.ok) form.reset();
+      } catch {
+        status.style.color = 'var(--sa-red)';
+        status.textContent = 'Connection error.';
+      }
+    });
+  </script>
+
+</body>
+</html>

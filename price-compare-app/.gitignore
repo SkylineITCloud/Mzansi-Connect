@@ -1,0 +1,21 @@
+# Dependencies
+node_modules/
+
+# Database
+*.db
+*.db-wal
+*.db-shm
+
+# Environment
+.env
+
+# Android
+android/.gradle/
+android/app/build/
+android/local.properties
+android/.idea/
+*.iml
+
+# OS
+.DS_Store
+Thumbs.db
