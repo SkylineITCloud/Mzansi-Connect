@@ -56,7 +56,7 @@ This is the company's **flagship product** and main focus. A physical prototype 
 - **Theme**: Brutalist design with thick black borders, high contrast, flag motifs, bold typography
 - **Fonts**: Space Grotesk (body), Archivo Black (headings, uppercase)
 - **Logo**: `images/Logo.png` — used in nav, footer, hero, favicon
-- **Images**: All images live in `images/` folder (Logo.png, Demo 1.png, Demo 2.png, Demo 3.png, Demo 4.png)
+- **Images**: All images live in `images/` folder (Logo.png, Demo 1.png through Demo 8.png)
 
 ### Product Lines (IoT)
 
@@ -81,7 +81,7 @@ Full-stack IoT prototype with LoRa sub-collar antitheft mesh. Has its own `.ctx/
 - **Hardware**: ESP32 + GPS + SIM800L + SX1278 LoRa + TP4056 + LiPo + solar + strap sensor, ~$43/unit cellular
 - **Compliance**: POPIA, ECTA, ICASA notices
 - **API**: `POST /api/locations`, `POST /api/panic`, `GET /api/locations/:id`, `GET /api/animals`, `POST /api/animals`, `PUT /api/animals/:id`, `GET /api/latest`, `GET /api/panic/active`, `GET /api/health`
-- **Images**: Demo 1-4 show dashboard, map view, analytics, and animal list screens
+- **Images**: Demo 1-8 show dashboard, map view, analytics, animal list, and additional prototype screenshots
 
 ### Groundbreaking Ideas
 - Smart Street Pole Network (solar IoT nodes with WiFi + surveillance + emergency)
