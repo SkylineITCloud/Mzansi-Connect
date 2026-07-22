@@ -917,6 +917,7 @@
           <ul>
             <li>Low-cost ESP32-powered devices</li>
             <li>WiFi, LoRa &amp; GSM connectivity</li>
+            <li>Sub-collar anti-theft mesh</li>
             <li>Solar-powered systems</li>
             <li>Cloud dashboards &amp; mobile apps</li>
             <li>Built for South African realities</li>
@@ -936,21 +937,34 @@
       </div>
       <h2 style="color:var(--sa-white);">Livestock <span style="color:var(--sa-gold);">GPS Tracker</span></h2>
       <p class="section-desc" style="color:rgba(255,255,255,0.7);max-width:800px;">
-        A full-stack IoT prototype: ESP32 collar + Express API + Supabase/PostgreSQL + Web dashboard + Android app. 
+        A full-stack IoT prototype: ESP32 main collar (GPS + GSM + LoRa) + sub-collar anti-theft mesh (LoRa + strap sensor) + Express API + Supabase/PostgreSQL + Web dashboard + Android app. 
         Built for South African emerging farmers to monitor livestock in real time.
       </p>
 
       <div class="proto-specs">
         <div class="proto-col">
-          <h4>Collar Hardware</h4>
+          <h4>Main Collar</h4>
           <ul>
             <li>ESP32-WROOM-32</li>
             <li>NEO-6M GPS module</li>
             <li>SIM800L GSM (cellular)</li>
+            <li>SX1278 LoRa (868 MHz)</li>
             <li>TP4056 LiPo charger</li>
             <li>5000mAh + 1W solar</li>
             <li>Deep sleep: 5min intervals</li>
-            <li>~$40/unit (cellular)</li>
+            <li>~$43/unit (cellular)</li>
+          </ul>
+        </div>
+        <div class="proto-col">
+          <h4>Sub-Collar</h4>
+          <ul>
+            <li>ESP32 + SX1278 LoRa</li>
+            <li>Strap continuity sensor</li>
+            <li>Detects collar cut/opening</li>
+            <li>Battery voltage monitoring</li>
+            <li>Heartbeat every 60 seconds</li>
+            <li>LoRa mesh up to 10 subs</li>
+            <li>5 min timeout = stray alert</li>
           </ul>
         </div>
         <div class="proto-col">
@@ -997,7 +1011,9 @@
       <div class="proto-arch">
         <h4>Architecture</h4>
         <div class="arch-diagram">
-          <span class="arch-node">ESP32 Collar<br><small>GPS + GSM</small></span>
+          <span class="arch-node" style="border-color:rgba(255,255,255,0.4);font-size:0.7rem;padding:8px 14px;">Sub-Collars<br><small>LoRa + Strap Sensor</small></span>
+          <span class="arch-arrow" style="font-size:1rem;">↕ LoRa 868MHz</span>
+          <span class="arch-node">ESP32 Main Collar<br><small>GPS + GSM + LoRa</small></span>
           <span class="arch-arrow">→ <small>POST /api/locations<br>(X-API-Key)</small></span>
           <span class="arch-node">Express API<br><small>Server</small></span>
           <span class="arch-arrow">→</span>
@@ -1063,7 +1079,11 @@
                   <li>Battery voltage monitoring</li>
                   <li>Historical trail playback</li>
                   <li>Supabase/PostGIS backend</li>
-                  <li>Affordable at ~$40/unit</li>
+                  <li>Affordable at ~$43/unit</li>
+                  <li><strong>Sub-collar anti-theft mesh</strong></li>
+                  <li>Strap cut/breach detection</li>
+                  <li>LoRa 868 MHz mesh (up to 10 subs)</li>
+                  <li>Panic detection &amp; severity alerts</li>
                 </ul>
               </div>
             </div>

@@ -18,7 +18,10 @@ If I create a new file, create it in BOTH folders. If I edit, edit BOTH.
 ### 3. Single source of truth (for config)
 The `.ctx/context.md` in `Mzansi Connect/` is the primary. Mirror edits to `Mzansi-Connect/.ctx/context.md` immediately.
 
-### 4. Brand separation
+### 4. Product changes → update index.html
+Whenever a product status changes (new prototype, launch, feature update, etc.), update the `index.html` website immediately to reflect it. The website is the public face of all products.
+
+### 5. Brand separation
 Mzansi Connect is a division of Skyline IT & Cloud. Do NOT confuse it with Circuit Forge Technologies, StudySync, or VALOW. — those are separate Skyline IT subsidiaries.
 
 ---
@@ -45,7 +48,7 @@ Mzansi Connect is a division of Skyline IT & Cloud. Do NOT confuse it with Circu
 Smart Technology for Every South African — IoT solutions focused on townships, SMMEs, schools, landlords, and entrepreneurs.
 
 ### CURRENT PRIORITY: Livestock GPS Tracker
-This is the company's **flagship product** and main focus. A physical prototype is being built now. The entire website hero, prototype spotlight section, and product grid lead with this product. All development, marketing, and content decisions should prioritize it.
+This is the company's **flagship product** and main focus. A physical prototype is being built now. The entire website hero, prototype spotlight section (with 4 demo images), and product grid lead with this product. All development, marketing, and content decisions should prioritize it.
 
 ### Brand Identity
 - **Colours**: SA flag brutalist — green (#007A4B), gold (#FFB612), red (#DE3831), blue (#002395), black (#000000), white (#FFFFFF)
@@ -53,6 +56,7 @@ This is the company's **flagship product** and main focus. A physical prototype 
 - **Theme**: Brutalist design with thick black borders, high contrast, flag motifs, bold typography
 - **Fonts**: Space Grotesk (body), Archivo Black (headings, uppercase)
 - **Logo**: `images/Logo.png` — used in nav, footer, hero, favicon
+- **Images**: All images live in `images/` folder (Logo.png, Demo 1.png, Demo 2.png, Demo 3.png, Demo 4.png)
 
 ### Product Lines (IoT)
 
@@ -66,15 +70,18 @@ This is the company's **flagship product** and main focus. A physical prototype 
 | Taxi Fleet Tracker | GPS, driver behaviour, fuel monitoring | Concept |
 
 ### Livestock GPS Tracker (`C:\Users\pervy\OneDrive\Desktop\Livestock tracker\`)
-Full IoT prototype: ESP32 collar → Express API → Supabase/PostgreSQL with PostGIS. Includes browser dashboard, Android app, firmware, hardware BOM, and SA compliance docs.
-- **Firmware**: ESP32 + GPS (NEO-6M/8M) + SIM800L GSM, deep sleep 5-min intervals, sends lat/lng/speed/battery via HTTP POST with X-API-Key auth
-- **Server**: Express.js, Supabase client, helmet/cors/rate-limit, serves web dashboard at `/`
-- **Database**: Supabase/PostgreSQL with PostGIS, tables: `animals`, `locations`, `geofences`, `alerts`, RLS policies, `latest_locations` view
-- **Web dashboard**: Static map-based browser interface served by Express
-- **Android app**: Kotlin/Jetpack Compose, Supabase client, map + list screens
-- **Hardware**: ESP32 + GPS + SIM800L + TP4056 + LiPo + solar panel, ~$40/unit (cellular), ~$153 (satellite)
-- **Compliance**: POPIA, ECTA, ICASA notices included
-- **API**: `POST /api/locations` (X-API-Key), `GET /api/locations/:animalId`, `GET /api/animals`, `POST /api/animals`, `PUT /api/animals/:id`, `GET /api/latest`, `GET /api/health`
+Full-stack IoT prototype with LoRa sub-collar antitheft mesh. Has its own `.ctx/context.md`.
+- **Main firmware**: ESP32 + GPS (NEO-6M/8M) + SIM800L GSM + SX1278 LoRa, deep sleep 5-min, panic detection (high speed, rapid accel, sub-collar events)
+- **Sub-collar firmware**: ESP32 + LoRa + strap continuity sensor — detects collar cut/opening, low battery, no-main-contact. Communicates via LoRa 868MHz
+- **Panic system**: Severity levels (info/warning/critical), triggers: strap_breach, high_speed, rapid_accel, sub_strayed, sub_low_battery
+- **Server**: Express.js, Supabase, helmet/cors/rate-limit, serves web dashboard
+- **Database**: Supabase/PostgreSQL + PostGIS — tables: `animals`, `locations`, `geofences`, `sub_collars`, `panic_events`, `alerts`. Views: `active_panics`, `latest_locations`
+- **Web dashboard**: Leaflet.js map, realtime Supabase subscriptions, panic bar, animal sidebar, battery/connection status
+- **Android app**: Kotlin/Jetpack Compose, osmdroid map, panic indicators, Supabase realtime
+- **Hardware**: ESP32 + GPS + SIM800L + SX1278 LoRa + TP4056 + LiPo + solar + strap sensor, ~$43/unit cellular
+- **Compliance**: POPIA, ECTA, ICASA notices
+- **API**: `POST /api/locations`, `POST /api/panic`, `GET /api/locations/:id`, `GET /api/animals`, `POST /api/animals`, `PUT /api/animals/:id`, `GET /api/latest`, `GET /api/panic/active`, `GET /api/health`
+- **Images**: Demo 1-4 show dashboard, map view, analytics, and animal list screens
 
 ### Groundbreaking Ideas
 - Smart Street Pole Network (solar IoT nodes with WiFi + surveillance + emergency)
@@ -107,11 +114,11 @@ start-server.bat
 | Feature | Details |
 | --- | --- |
 | Port | 3000 (configurable via `.env`) |
-| Database | SQLite via better-sqlite3 (`server/data/mzansi.db`) |
+| Database | JSON file storage (`server/data/contacts.json`, `server/data/subscribers.json`) |
 | Security | helmet, CORS (origin-locked), input validation (express-validator) |
 | Rate limiting | 200 req/15min global, 5 req/hour for contact/subscribe |
 | Admin auth | `X-API-Key` header matching `ADMIN_API_KEY` in `.env` |
-| Static files | Serves entire repo root (index.html + assets) |
+| Static files | Serves entire repo root (index.html + images/ + assets) |
 
 **API Endpoints:**
 
@@ -139,10 +146,17 @@ start-server.bat
 - Match existing patterns (don't introduce new libraries/frameworks unasked)
 - Single-file HTML approach for the website (CSS + JS embedded)
 - Keep font sizes readable (at least 0.88rem for body text)
+- All images referenced as `images/` path (not root)
 
 ## HOW TO HANDLE REQUESTS
 
 1. **Clarify if needed** — if unsure what user means, ask a short question
 2. **Make the change** — edit files directly
-3. **Verify** — if tests exist or I can quickly check, do so
-4. **Be concise** — no long explanations, just confirm what was done
+3. **Mirror** — duplicate to `Mzansi-Connect/` immediately
+4. **Verify** — if tests exist or I can quickly check, do so
+5. **Be concise** — no long explanations, just confirm what was done
+
+## MIRROR CHECKLIST (run after every change)
+- [ ] Did I edit the file in `Mzansi Connect\`?
+- [ ] Did I make the SAME edit in `Mzansi-Connect\`?
+- [ ] If I created a new file, did I create it in both?
