@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="600" viewBox="0 0 1600 600" role="img" aria-labelledby="title description">
+  <title id="title">Mzansi Connect logo</title>
+  <desc id="description">A connected network emblem in navy, green, gold and red beside the Mzansi Connect wordmark.</desc>
+  <rect width="1600" height="600" fill="#ffffff"/>
+  <g transform="translate(110 100)">
+    <circle cx="200" cy="200" r="175" fill="none" stroke="#062B4F" stroke-width="20"/>
+    <path d="M80 265C118 307 160 329 207 329C262 329 307 300 334 250" fill="none" stroke="#009B4D" stroke-width="27" stroke-linecap="round"/>
+    <path d="M107 206C126 147 178 111 241 111C277 111 310 123 336 145" fill="none" stroke="#F5B335" stroke-width="27" stroke-linecap="round"/>
+    <path d="M89 228L147 198L205 226L267 165L323 192" fill="none" stroke="#062B4F" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="89" cy="228" r="21" fill="#E53B34"/>
+    <circle cx="147" cy="198" r="21" fill="#009B4D"/>
+    <circle cx="205" cy="226" r="21" fill="#F5B335"/>
+    <circle cx="267" cy="165" r="21" fill="#009B4D"/>
+    <circle cx="323" cy="192" r="21" fill="#E53B34"/>
+    <path d="M174 286C174 252 202 224 236 224H248C282 224 310 252 310 286" fill="none" stroke="#062B4F" stroke-width="16" stroke-linecap="round"/>
+  </g>
+  <g font-family="Arial, Helvetica, sans-serif">
+    <text x="545" y="285" fill="#062B4F" font-size="118" font-weight="700" letter-spacing="-3">Mzansi</text>
+    <text x="545" y="400" fill="#009B4D" font-size="92" font-weight="500" letter-spacing="1">Connect</text>
+    <rect x="550" y="442" width="600" height="10" rx="5" fill="#F5B335"/>
+    <circle cx="1175" cy="447" r="9" fill="#E53B34"/>
+  </g>
+</svg>
