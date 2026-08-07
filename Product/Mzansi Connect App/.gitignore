@@ -1,0 +1,17 @@
+node_modules/
+.env
+*.log
+.DS_Store
+Thumbs.db
+build/
+.gradle/
+.idea/
+*.apk
+*.aab
+local.properties
+
+# Firmware secrets
+firmware/config.h
+
+# Web app config (served by server)
+web/config.js

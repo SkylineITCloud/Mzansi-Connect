@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <style name="Theme.LiveStockTracker" parent="Theme.Material3.Dark.NoActionBar">
+    <item name="colorPrimary">#E94560</item>
+    <item name="colorOnPrimary">#FFFFFF</item>
+    <item name="colorSurface">#16213E</item>
+    <item name="colorOnSurface">#EEEEEE</item>
+    <item name="colorBackground">#1A1A2E</item>
+  </style>
+</resources>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- SA Flag Colors -->
+    <color name="sa_green">#007A4B</color>
+    <color name="sa_gold">#FFB612</color>
+    <color name="sa_red">#DE3831</color>
+    <color name="sa_blue">#002395</color>
+    <color name="sa_black">#000000</color>
+    <color name="sa_white">#FFFFFF</color>
+
+    <!-- Extended Palette -->
+    <color name="green_dark">#005C38</color>
+    <color name="green_light">#E8F5E9</color>
+    <color name="gold_light">#FFF8E1</color>
+    <color name="red_light">#FFEBEE</color>
+    <color name="blue_light">#E3F2FD</color>
+
+    <!-- UI Colors -->
+    <color name="primary">#007A4B</color>
+    <color name="primary_dark">#005C38</color>
+    <color name="primary_light">#E8F5E9</color>
+    <color name="secondary">#FFB612</color>
+    <color name="accent">#DE3831</color>
+    <color name="dark">#002395</color>
+    <color name="card_bg">#FFFFFF</color>
+    <color name="background">#F5F5F5</color>
+    <color name="text_primary">#1A1A1A</color>
+    <color name="text_secondary">#666666</color>
+    <color name="text_hint">#999999</color>
+    <color name="divider">#E0E0E0</color>
+    <color name="white">#FFFFFF</color>
+    <color name="success">#4CAF50</color>
+    <color name="warning">#FF9800</color>
+</resources>

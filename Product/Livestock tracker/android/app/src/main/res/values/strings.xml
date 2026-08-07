@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="app_name">LiveStock Tracker</string>
+  <string name="map_label">Live Map</string>
+  <string name="animals_label">My Herd</string>
+  <string name="connecting">Connecting…</string>
+</resources>

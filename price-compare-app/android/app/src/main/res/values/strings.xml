@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Mzansi Price Compare</string>
+    <string name="tagline">Find the best price. Every time.</string>
+    <string name="login_title">Welcome Back!</string>
+    <string name="login_subtitle">Compare prices across SA\'s top stores</string>
+    <string name="email_hint">Email address</string>
+    <string name="password_hint">Password</string>
+    <string name="login_btn">Login</string>
+    <string name="no_account">Don\'t have an account?</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="register_title">Join Mzansi Price Compare</string>
+    <string name="register_subtitle">Start saving money today</string>
+    <string name="name_hint">Full name</string>
+    <string name="register_btn">Create Account</string>
+    <string name="have_account">Already have an account?</string>
+    <string name="sign_in">Sign In</string>
+    <string name="search_hint">Search any product… smartphones, sneakers, laptops</string>
+    <string name="trending_title">Trending Searches 🔥</string>
+    <string name="categories_title">Browse Categories</string>
+    <string name="results_title">Search Results</string>
+    <string name="stores_count">%d stores</string>
+    <string name="from_text">from</string>
+    <string name="buy_now">Buy Now</string>
+    <string name="save_product">Save</string>
+    <string name="saved_title">Saved Items</string>
+    <string name="profile_title">My Profile</string>
+    <string name="logout_btn">Logout</string>
+    <string name="no_results">No products found</string>
+    <string name="sort_price_low">Price: Low to High</string>
+    <string name="sort_price_high">Price: High to Low</string>
+    <string name="sort_name">Name</string>
+    <string name="in_stock">In Stock</string>
+    <string name="out_of_stock">Out of Stock</string>
+    <string name="price_compare_title">Compare prices across stores</string>
+</resources>

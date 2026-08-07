@@ -1,0 +1,9 @@
+# ============================================================
+# LiveStock Tracker Android — Local Build Configuration
+# ⚠ Copy to local.properties and fill in real values.
+#    local.properties is in .gitignore — NEVER commit it.
+# ============================================================
+
+# Supabase project credentials (from Settings → API)
+SUPABASE_URL=https://your-project.supabase.co
+SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
