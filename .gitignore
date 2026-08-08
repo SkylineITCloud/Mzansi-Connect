@@ -8,3 +8,4 @@ server/data/
 data/
 *.db
 .edge-render-profile/
+agent-records/
