@@ -48,7 +48,7 @@ Mzansi Connect is a division of Skyline IT & Cloud. Do NOT confuse it with Circu
 Smart Technology for Every South African — Internet Of Things (IoT) solutions focused on townships, SMMEs, schools, landlords, and entrepreneurs.
 
 ### CURRENT PRIORITY: Livestock GPS Tracker
-This is the company's **flagship product** and main focus. A physical prototype is being built now. The entire website hero, prototype spotlight section (with 4 demo images), and product grid lead with this product. All development, marketing, and content decisions should prioritize it.
+This is the company's **primary product** and main focus. A physical prototype is being built now. The entire website hero, prototype spotlight section (with 4 demo images), and product grid lead with this product. All development, marketing, and content decisions should prioritize it.
 
 ### Brand Identity
 - **Colours**: SA flag brutalist — green (#007A4B), gold (#FFB612), red (#DE3831), blue (#002395), black (#000000), white (#FFFFFF)
@@ -62,7 +62,7 @@ This is the company's **flagship product** and main focus. A physical prototype 
 
 | Product | Purpose | Status |
 | --- | --- | --- |
-| **Livestock GPS Tracker** | **ESP32-based GPS collar for livestock — flagship prototype** | **Prototyping (current focus)** |
+| **Livestock GPS Tracker** | **ESP32-based GPS collar for livestock — prototype. Retail price R2,000/unit** | **Prototyping (current focus)** |
 | Smart Spaza Shop Security | Motion, door, panic, SMS alerts for small businesses | Concept |
 | Smart Water Tank Monitor | Water level, leak, overflow monitoring | Concept |
 | Kasi Smart Electricity Monitor | Usage, prepaid meter, appliance tracking | Concept |

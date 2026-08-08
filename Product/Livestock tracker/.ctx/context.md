@@ -14,7 +14,7 @@ Read this file at the start of every single prompt before doing anything else.
 This project lives in this folder only. No mirror sync unless explicitly told otherwise.
 
 ### 3. Parent company
-Livestock GPS Tracker is the flagship product of **Mzansi Connect**, a division of **Skyline IT & Cloud**. Physical prototype being built.
+Livestock GPS Tracker is the primary product of **Mzansi Connect**, a division of **Skyline IT & Cloud**. Physical prototype being built. Retail price: R2,000/unit.
 
 ---
 

@@ -496,6 +496,14 @@
 
     .eco-card p { font-size: 0.95rem; color: var(--gray-700); line-height: 1.5; }
 
+    .eco-card .eco-logo {
+      width: 84px;
+      height: 84px;
+      object-fit: contain;
+      display: block;
+      margin: 0 auto 16px;
+    }
+
     /* ─── IMPACT ─── */
     .impact-strip {
       background: var(--sa-green);
@@ -631,7 +639,7 @@
     }
     .proto-specs {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 32px;
       margin: 36px 0;
     }
@@ -752,11 +760,12 @@
     }
 
     @media (max-width: 768px) {
-      .proto-specs { grid-template-columns: 1fr; }
+      .proto-specs { grid-template-columns: 1fr 1fr; }
       .arch-diagram { flex-direction: column; }
     }
 
     @media (max-width: 480px) {
+      .proto-specs { grid-template-columns: 1fr; }
       .contact-form .form-row { flex-direction: column; gap: 0; }
     }
 
@@ -888,16 +897,16 @@
       </h1>
       <div class="hero-sub">Built for emerging farmers. Powered by ESP32. Protecting what matters.</div>
       <p>
-        The <strong>Livestock GPS Tracker</strong> is our flagship Internet Of Things (IoT) prototype - an ESP32-powered GPS collar 
+        The <strong>Livestock GPS Tracker</strong> is our Internet Of Things (IoT) prototype - an ESP32-powered GPS collar 
         that lets farmers monitor their cattle, sheep, and goats in real time. Solar-powered, cellular-connected, 
-        and affordable at under R800 per unit. Physical prototype in progress now.
+        and affordable at R2,000 per unit. Physical prototype in progress now.
       </p>
       <div class="hero-actions">
         <a href="#prototype" class="btn btn-gold">See the Prototype</a>
-        <a href="#products" class="btn btn-outline-white">All Products</a>
+        <a href="#products" class="btn btn-outline-white">Meet the Tracker</a>
       </div>
       <div class="hero-stat">
-        <strong>Flagship</strong> ESP32 + GPS + GSM · Solar-Powered
+        <strong>ESP32 + GPS + GSM</strong> · Solar-Powered
       </div>
     </div>
   </section>
@@ -1037,7 +1046,7 @@
           <img src="images/Demo 8.png" alt="Livestock GPS Tracker screenshot" loading="lazy" decoding="async">
         </div>
       </div>
-      <p style="text-align:center;color:rgba(255,255,255,0.5);font-size:0.8rem;margin-top:-24px;">Screenshots of the Livestock GPS Tracker prototype in action.</p>
+      <p style="text-align:center;color:rgba(255,255,255,0.5);font-size:0.8rem;margin-top:-24px;">Our Prototype Goal: a low-cost, solar-powered GPS collar that keeps every herd safe — from prototype to product.</p>
 
       <div class="proto-arch">
         <h4>Architecture</h4>
@@ -1067,19 +1076,19 @@
   <section id="products">
     <div class="container">
       <div class="section-label">
-        <span>Our Products</span>
+        <span>Our Product</span>
         <div class="line"></div>
       </div>
-      <h2>Smart Devices for <span class="highlight-green">Real Life</span></h2>
+      <h2>What We're <span class="highlight-green">Building Now</span></h2>
       <p class="section-desc">
-        Practical, low-cost Internet Of Things (IoT) solutions designed for South African homes, businesses, and communities.
+        Right now Mzansi Connect is focused on one product: the Livestock GPS Tracker. Everything else on our roadmap comes after the prototype.
       </p>
       <div class="product-grid">
         <div class="product-card" id="livestock" style="grid-column:1/-1;border-width:6px;border-color:var(--sa-gold);box-shadow:12px 12px 0 var(--black);">
           <div style="display:grid;grid-template-columns:auto 1fr;gap:32px;align-items:start;">
             <div style="font-size:4rem;line-height:1;text-align:center;padding-top:8px;">🐄</div>
             <div>
-              <span class="card-badge gold" style="font-size:0.8rem;padding:6px 16px;">★ Flagship Prototype - Physical Build in Progress</span>
+              <span class="card-badge gold" style="font-size:0.8rem;padding:6px 16px;">★ Prototype - Physical Build in Progress</span>
               <h3 style="font-size:1.6rem;margin:12px 0;">Livestock GPS Tracker</h3>
               <p style="font-size:0.95rem;color:var(--gray-700);line-height:1.5;margin-bottom:16px;">
                 A full-stack Internet Of Things (IoT) livestock tracking system. The ESP32 collar posts GPS coordinates to a secure 
@@ -1110,7 +1119,7 @@
                   <li>Battery voltage monitoring</li>
                   <li>Historical trail playback</li>
                   <li>Supabase/PostGIS backend</li>
-                  <li>Affordable at under R800 per unit</li>
+                  <li>Affordable at R2,000 per unit</li>
                   <li><strong>Sub-collar anti-theft mesh</strong></li>
                   <li>Strap cut/breach detection</li>
                   <li>LoRa 868 MHz mesh (up to 10 subs)</li>
@@ -1120,119 +1129,19 @@
             </div>
           </div>
         </div>
-
-        <div class="product-card">
-          <span class="card-icon">🔒</span>
-          <span class="card-badge red">Popular</span>
-          <h3>Smart Spaza Shop Security</h3>
-          <ul>
-            <li>Motion detection</li>
-            <li>Door opening alerts</li>
-            <li>SMS notifications</li>
-            <li>Power outage alerts</li>
-            <li>Panic button</li>
-          </ul>
-          <div class="benefits">
-            <strong>Benefits</strong>
-            <ul>
-              <li>Reduces theft</li>
-              <li>Protects stock</li>
-              <li>Peace of mind</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="product-card">
-          <span class="card-icon">💧</span>
-          <span class="card-badge blue">New</span>
-          <h3>Smart Water Tank Monitor</h3>
-          <ul>
-            <li>Water level monitoring</li>
-            <li>Leak detection</li>
-            <li>Overflow alerts</li>
-            <li>Mobile notifications</li>
-          </ul>
-          <div class="benefits">
-            <strong>Benefits</strong>
-            <ul>
-              <li>Saves water</li>
-              <li>Prevents shortages</li>
-              <li>Reduces maintenance</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="product-card">
-          <span class="card-icon">⚡</span>
-          <span class="card-badge gold">Best Seller</span>
-          <h3>Kasi Smart Electricity Monitor</h3>
-          <ul>
-            <li>Daily usage reports</li>
-            <li>High usage alerts</li>
-            <li>Prepaid meter monitoring</li>
-            <li>Appliance tracking</li>
-          </ul>
-          <div class="benefits">
-            <strong>Benefits</strong>
-            <ul>
-              <li>Reduces electricity bills</li>
-              <li>Helps families budget</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="product-card">
-          <span class="card-icon">🏠</span>
-          <span class="card-badge green">Smart</span>
-          <h3>Smart Rental Room Manager</h3>
-          <ul>
-            <li>Electricity monitoring</li>
-            <li>Water monitoring</li>
-            <li>Occupancy detection</li>
-            <li>Tenant usage reports</li>
-          </ul>
-          <div class="benefits">
-            <strong>Benefits</strong>
-            <ul>
-              <li>Easier property management</li>
-              <li>Reduced disputes</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="product-card" style="grid-column: span 1;">
-          <span class="card-icon">🚕</span>
-          <span class="card-badge blue">Fleet</span>
-          <h3>Taxi Fleet Tracker</h3>
-          <ul>
-            <li>Live GPS tracking</li>
-            <li>Driver behavior monitoring</li>
-            <li>Vehicle health alerts</li>
-            <li>Fuel monitoring</li>
-          </ul>
-          <div class="benefits">
-            <strong>Benefits</strong>
-            <ul>
-              <li>Improved safety</li>
-              <li>Reduced fuel theft</li>
-              <li>Better route management</li>
-            </ul>
-          </div>
-        </div>
       </div>
     </div>
   </section>
-
-  <!-- ─── GROUNDBREAKING IDEAS ─── -->
+  <!-- ─── GROUNDBREAKING IDEAS / ROADMAP ─── -->
   <section class="ground-section" id="ideas">
     <div class="container">
       <div class="section-label">
-        <span>Groundbreaking</span>
+        <span>The Roadmap</span>
         <div class="line" style="background:var(--sa-white);"></div>
       </div>
-      <h2>Ideas That <span style="color:var(--sa-gold);">Change Everything</span></h2>
+      <h2>What We Want to <span style="color:var(--sa-gold);">Build Next</span></h2>
       <p class="section-desc">
-        Beyond products - these are the innovations that will reshape townships and communities across South Africa.
+        Right now we're prototyping the Livestock GPS Tracker. These are the products we envision building next - all part of the goal we're working toward.
       </p>
       <div class="idea-grid">
         <div class="idea-card">
@@ -1292,11 +1201,11 @@
       </div>
       <h2>More Than <span class="highlight-gold">Devices</span></h2>
       <p class="section-desc">
-        Mzansi Connect is a complete ecosystem - an app, cloud platform, and marketplace working together to empower communities.
+        Mzansi Connect is a complete ecosystem - an app, cloud platform, web dashboard, and marketplace working together to empower communities.
       </p>
       <div class="eco-grid">
         <div class="eco-card">
-          <span class="eco-icon">📱</span>
+          <img src="images/Logo.png" alt="Mzansi Connect App logo" class="eco-logo" loading="lazy" decoding="async">
           <h3>Mzansi Connect App</h3>
           <p>View device data, receive real-time alerts, track energy usage, monitor security systems, and manage subscriptions - all from your phone.</p>
           <div class="proto-actions" style="justify-content:center;margin-top:16px;">
@@ -1305,7 +1214,7 @@
           </div>
         </div>
         <div class="eco-card">
-          <span class="eco-icon">☁️</span>
+          <img src="images/Logo.png" alt="Mzansi Cloud logo" class="eco-logo" loading="lazy" decoding="async">
           <h3>Mzansi Cloud</h3>
           <p>Secure cloud platform storing customer information and device analytics with real-time dashboards and historical reporting.</p>
           <div class="proto-actions" style="justify-content:center;margin-top:16px;">
@@ -1314,7 +1223,15 @@
           </div>
         </div>
         <div class="eco-card">
-          <span class="eco-icon">🏪</span>
+          <img src="images/Logo.png" alt="Livestock Tracker Dashboard logo" class="eco-logo" loading="lazy" decoding="async">
+          <h3>Livestock Tracker Dashboard</h3>
+          <p>Real-time map of your herd: live locations, geofence alerts, panic warnings, battery status, and historical trail playback.</p>
+          <div class="proto-actions" style="justify-content:center;margin-top:16px;">
+            <a href="/livestock/" class="btn btn-gold" style="padding:10px 18px;font-size:0.85rem;">Open the Dashboard</a>
+          </div>
+        </div>
+        <div class="eco-card">
+          <img src="images/Logo.png" alt="Mzansi Marketplace logo" class="eco-logo" loading="lazy" decoding="async">
           <h3>Mzansi Marketplace</h3>
           <p>A platform where local technicians can install devices, provide support, and earn income - creating jobs while expanding technology access.</p>
           <div class="proto-actions" style="justify-content:center;margin-top:16px;">
@@ -1533,20 +1450,31 @@
       e.preventDefault();
       const form = e.target;
       const status = document.getElementById('subscribeStatus');
+      const email = form.email.value.trim();
+      if (!email) {
+        status.style.color = 'var(--sa-red)';
+        status.textContent = 'Please enter your email address.';
+        return;
+      }
       try {
         const res = await fetch(apiBase + '/api/mzansi/subscribe', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email: form.email.value.trim() }),
+          body: JSON.stringify({ email }),
         });
         const json = await res.json();
         status.style.color = res.ok ? 'var(--sa-green)' : 'var(--sa-red)';
         status.textContent = json.message || 'Done.';
         if (res.ok) form.reset();
+        return;
       } catch {
-        status.style.color = 'var(--sa-red)';
-        status.textContent = 'Connection error.';
+        // No backend (e.g. GitHub Pages): fall back to email subscription
       }
+      status.style.color = 'var(--sa-green)';
+      status.textContent = 'Opening your email app to subscribe...';
+      const subject = encodeURIComponent('Subscribe me to Mzansi Connect updates');
+      window.location.href = 'mailto:projectpstg@gmail.com?subject=' + subject;
+      form.reset();
     });
   </script>
 
