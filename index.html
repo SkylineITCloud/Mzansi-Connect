@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Mzansi Connect - affordable Internet Of Things (IoT) solutions built for South Africa. Livestock GPS trackers, smart security, water monitoring, electricity tracking, and fleet management. A Skyline IT &amp; Cloud company.">
-  <meta name="keywords" content="Mzansi Connect, Internet Of Things (IoT) South Africa, livestock tracker, smart security, spaza shop security, water tank monitor, electricity monitor, fleet tracker">
+  <meta name="description" content="Mzansi Connect - smart devices at fair prices built for South Africa. Livestock GPS trackers, smart security, water monitoring, electricity tracking, and vehicle tracking. A Skyline IT &amp; Cloud company.">
+  <meta name="keywords" content="Mzansi Connect, smart devices South Africa, livestock tracker, smart security, spaza shop security, water tank monitor, electricity monitor, fleet tracker">
   <meta property="og:title" content="Mzansi Connect - Smart Technology for Every South African">
-  <meta property="og:description" content="Affordable Internet Of Things (IoT) solutions designed for South African realities. Built by Mzansi Connect, a Skyline IT &amp; Cloud company.">
+  <meta property="og:description" content="Smart devices designed for South African realities. Built by Mzansi Connect, a Skyline IT &amp; Cloud company.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="images/Logo.png">
   <title>Mzansi Connect - Smart Technology for Every South African</title>
@@ -934,18 +934,19 @@
         <span class="highlight">South Africa's</span><br>
         <span style="color:var(--sa-gold);">Livestock</span>
       </h1>
-      <div class="hero-sub">Built for emerging farmers. Powered by ESP32. Protecting what matters.</div>
+      <div class="hero-sub">Built for emerging farmers. Made to protect what matters.</div>
       <p>
-        The <strong>Livestock GPS Tracker</strong> is our Internet Of Things (IoT) prototype - an ESP32-powered GPS collar 
-        that lets farmers monitor their cattle, sheep, and goats in real time. Solar-powered, cellular-connected, 
-        and affordable at R2,000 per unit. Physical prototype in progress now.
+        The <strong>Livestock GPS Tracker</strong> is our smart device prototype — an ESP32-C3 collar 
+        with NEO-6M GPS, SIM800L 2G GSM (prototype connectivity), and CN3065 solar charging.
+        Regulated 5V/3.3V power rails with bulk capacitors. Solar-powered, connected by 
+        mobile network, and priced at R2,000 per unit. The physical prototype is being built now.
       </p>
       <div class="hero-actions">
         <a href="#prototype" class="btn btn-gold">See the Prototype</a>
         <a href="#products" class="btn btn-outline-white">Meet the Tracker</a>
       </div>
       <div class="hero-stat">
-        <strong>ESP32 + GPS + GSM</strong> · Solar-Powered
+        <strong>ESP32-C3 + NEO-6M GPS</strong> · Solar-Powered
       </div>
     </div>
   </section>
@@ -962,8 +963,8 @@
       </div>
       <h2>Why <span class="highlight-red">Mzansi Connect</span> Exists</h2>
       <p class="section-desc">
-        Millions of South Africans face real daily challenges that technology could solve - but existing 
-        solutions are expensive, imported, and designed for foreign markets. We're changing that.
+        Millions of South Africans face real daily challenges that technology could solve - but current 
+        solutions are expensive, imported, and built for foreign markets. We're changing that.
       </p>
       <div class="two-col">
         <div class="problem-box red">
@@ -975,19 +976,19 @@
             <li>Livestock theft costing farmers billions</li>
             <li>Limited access to technology</li>
             <li>Poor business monitoring tools</li>
-            <li>Lack of affordable automation</li>
+            <li>No affordable automation</li>
           </ul>
         </div>
         <div class="problem-box green">
           <h3>Our Solution</h3>
           <ul>
-            <li>Low-cost ESP32-powered devices</li>
-            <li>WiFi, LoRa &amp; GSM connectivity</li>
-            <li>Sub-collar anti-theft mesh</li>
+            <li>Low-cost devices built by our team</li>
+            <li>Works on WiFi and mobile networks</li>
+            <li>Anti-theft mesh designed into the collar</li>
             <li>Solar-powered systems</li>
-            <li>Cloud dashboards &amp; mobile apps</li>
+            <li>Online dashboards & mobile apps</li>
             <li>Built for South African realities</li>
-            <li>Affordable for everyone</li>
+            <li>Priced for everyone</li>
           </ul>
         </div>
       </div>
@@ -1003,58 +1004,60 @@
       </div>
       <h2 style="color:var(--sa-white);">Livestock <span style="color:var(--sa-gold);">GPS Tracker</span></h2>
       <p class="section-desc" style="color:rgba(255,255,255,0.7);max-width:800px;">
-        A full-stack Internet Of Things (IoT) prototype: ESP32 main collar (GPS + GSM + LoRa) + sub-collar anti-theft mesh (LoRa + strap sensor) + Express API + Supabase/PostgreSQL + Web dashboard + Android app. 
-        Built for South African emerging farmers to monitor livestock in real time.
+        A complete smart device prototype built on ESP32-C3: the main collar (NEO-6M GPS + SIM800L 2G GSM + sub-GHz radio)
+        keeps track of each animal, with a small sub-collar that sounds the alarm if the main collar is cut off.
+        Telemetry flows: Tracker → Cellular Network → Backend API → Web Dashboard / Android App.
+        Solar-powered with CN3065 charge controller and regulated power rails. All data shows up on a web dashboard and an Android app.
+        Built for South African emerging farmers to watch their livestock in real time.
       </p>
 
       <div class="proto-specs">
         <div class="proto-col">
-          <h4>Main Collar</h4>
+          <h4>Main Collar (Current Prototype)</h4>
           <ul>
-            <li>ESP32-WROOM-32</li>
-            <li>NEO-6M GPS module</li>
-            <li>SIM800L GSM (cellular)</li>
-            <li>SX1278 LoRa (868 MHz)</li>
-            <li>TP4056 LiPo charger</li>
-            <li>5000mAh + 1W solar</li>
-            <li>Deep sleep: 5min intervals</li>
-            <li>Low-cost BOM (cellular)</li>
+            <li>ESP32-C3 Mini — ultra-low-power RISC-V MCU</li>
+            <li>NEO-6M GPS receiver — 1 Hz position fix</li>
+            <li>SIM800L 2G GSM — prototype connectivity (2G not final)</li>
+            <li>CN3065 solar charge controller + MPPT input</li>
+            <li>3.7V Li-ion rechargeable battery</li>
+            <li>Regulated power: 5V rail (CN3065), 3.3V rail (LDO)</li>
+            <li>Bulk capacitors on both power rails for load transients</li>
+            <li>Ultra-low-power sleep — wake every 5 min for GPS fix</li>
           </ul>
         </div>
         <div class="proto-col">
-          <h4>Sub-Collar</h4>
+          <h4>Sub-Collar (Anti-Theft)</h4>
           <ul>
-            <li>ESP32 + SX1278 LoRa</li>
-            <li>Strap continuity sensor</li>
-            <li>Detects collar cut/opening</li>
-            <li>Battery voltage monitoring</li>
-            <li>Heartbeat every 60 seconds</li>
-            <li>LoRa mesh up to 10 subs</li>
-            <li>5 min timeout = stray alert</li>
+            <li>Separate ESP32 + sub-GHz radio module</li>
+            <li>Strap continuity sensor — detects cut/opening</li>
+            <li>Sends heartbeat signal every 60 seconds</li>
+            <li>5 min silence = stray / theft alert</li>
+            <li>Radio mesh links up to 10 sub-collars</li>
+            <li>Independent battery with voltage monitoring</li>
           </ul>
         </div>
         <div class="proto-col">
-          <h4>Server &amp; API</h4>
+          <h4>Server &amp; Data</h4>
           <ul>
-            <li>Express.js + Supabase</li>
-            <li>helmet · cors · rate-limit</li>
-            <li>X-API-Key auth for collars</li>
-            <li>PostGIS geospatial queries</li>
-            <li>Geofence breach detection</li>
-            <li>RLS per-farmer data isolation</li>
-            <li>REST: 7 endpoints</li>
+            <li>Express.js + Supabase (PostgreSQL)</li>
+            <li>REST API — rate-limited, secret-key protected</li>
+            <li>Telemetry path: Tracker → Cellular → API → Dashboard</li>
+            <li>Map-ready location data (lat/long, altitude, speed)</li>
+            <li>Safe-zone breach detection and alerts</li>
+            <li>Each farmer sees only their own data (RLS)</li>
+            <li>WebSocket live updates to dashboard and app</li>
           </ul>
         </div>
         <div class="proto-col">
           <h4>Apps &amp; Dashboard</h4>
           <ul>
             <li>Web dashboard (map-based)</li>
-            <li>Android app (Kotlin)</li>
-            <li>Real-time location view</li>
+            <li>Android app</li>
+            <li>Live location view</li>
             <li>Animal list &amp; status</li>
-            <li>Historical trail playback</li>
+            <li>Past route playback</li>
             <li>Battery &amp; health alerts</li>
-            <li>Supabase realtime sync</li>
+            <li>Live data sync</li>
           </ul>
         </div>
       </div>
@@ -1067,7 +1070,7 @@
           <img src="images/Demo 2.png" alt="Livestock GPS Tracker map view" loading="lazy" decoding="async">
         </div>
         <div class="gallery-item">
-          <img src="images/Demo 3.png" alt="Livestock GPS Tracker analytics" loading="lazy" decoding="async">
+          <img src="images/Demo 3.png" alt="Livestock GPS Tracker data reports" loading="lazy" decoding="async">
         </div>
         <div class="gallery-item">
           <img src="images/Demo 4.png" alt="Livestock GPS Tracker animal list" loading="lazy" decoding="async">
@@ -1088,15 +1091,15 @@
       <p style="text-align:center;color:rgba(255,255,255,0.5);font-size:0.8rem;margin-top:-24px;">Our Prototype Goal: a low-cost, solar-powered GPS collar that keeps every herd safe — from prototype to product.</p>
 
       <div class="proto-arch">
-        <h4>Architecture</h4>
+        <h4>How It Connects</h4>
         <div class="arch-diagram">
-          <span class="arch-node" style="border-color:rgba(255,255,255,0.4);font-size:0.7rem;padding:8px 14px;">Sub-Collars<br><small>LoRa + Strap Sensor</small></span>
-          <span class="arch-arrow" style="font-size:1rem;">↕ LoRa 868MHz</span>
-          <span class="arch-node">ESP32 Main Collar<br><small>GPS + GSM + LoRa</small></span>
-          <span class="arch-arrow">→ <small>POST /api/locations<br>(X-API-Key)</small></span>
-          <span class="arch-node">Express API<br><small>Server</small></span>
+          <span class="arch-node" style="border-color:rgba(255,255,255,0.4);font-size:0.7rem;padding:8px 14px;">Sub-Collars<br><small>Radio + Strap Sensor</small></span>
+          <span class="arch-arrow" style="font-size:1rem;">↕ Radio 868MHz</span>
+          <span class="arch-node">ESP32-C3 Collar<br><small>GPS + 2G GSM + Sub-Radio</small></span>
+          <span class="arch-arrow">→ <small>sends location</small></span>
+          <span class="arch-node">Backend Server<br><small>Express.js + API</small></span>
           <span class="arch-arrow">→</span>
-          <span class="arch-node">Supabase<br><small>PostgreSQL + PostGIS</small></span>
+          <span class="arch-node">Supabase<br><small>Data storage</small></span>
           <span class="arch-arrow branch">↘</span>
           <span class="arch-arrow branch">↙</span>
           <span class="arch-node small">Web Dashboard</span>
@@ -1130,39 +1133,43 @@
               <span class="card-badge gold" style="font-size:0.8rem;padding:6px 16px;">★ Prototype - Physical Build in Progress</span>
               <h3 style="font-size:1.6rem;margin:12px 0;">Livestock GPS Tracker</h3>
               <p style="font-size:0.95rem;color:var(--gray-700);line-height:1.5;margin-bottom:16px;">
-                A full-stack Internet Of Things (IoT) livestock tracking system. The ESP32 collar posts GPS coordinates to a secure 
-                Express/Supabase API. Farmers view real-time locations on the web dashboard or Android app. 
-                Geofence breaches trigger instant alerts. Solar-recharged battery lasts weeks.
+                A complete smart device system for tracking livestock. The ESP32-C3 collar uses a NEO-6M GPS receiver 
+                and SIM800L 2G GSM module (prototype connectivity — 2G is not the final commercial link) to transmit 
+                location data to a secure server. Solar charging via CN3065 with regulated 5V and 3.3V power rails 
+                and bulk capacitors. Farmers see live locations on the web dashboard or Android app.
+                Safe-zone alerts fire instantly when an animal leaves the area.
               </p>
               <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:16px;">
                 <div style="border:2px solid var(--gray-300);padding:12px;text-align:center;">
-                  <strong style="font-size:1.2rem;font-family:'Archivo Black',sans-serif;">ESP32</strong>
-                  <p style="font-size:0.7rem;color:var(--gray-700);">Microcontroller</p>
+                  <strong style="font-size:1.2rem;font-family:'Archivo Black',sans-serif;">ESP32-C3</strong>
+                  <p style="font-size:0.7rem;color:var(--gray-700);">Ultra-low-power RISC-V MCU</p>
                 </div>
                 <div style="border:2px solid var(--gray-300);padding:12px;text-align:center;">
-                  <strong style="font-size:1.2rem;font-family:'Archivo Black',sans-serif;">GPS+GSM</strong>
-                  <p style="font-size:0.7rem;color:var(--gray-700);">Connectivity</p>
+                  <strong style="font-size:1.2rem;font-family:'Archivo Black',sans-serif;">NEO-6M GPS</strong>
+                  <p style="font-size:0.7rem;color:var(--gray-700);">1 Hz position fix</p>
                 </div>
                 <div style="border:2px solid var(--gray-300);padding:12px;text-align:center;">
-                  <strong style="font-size:1.2rem;font-family:'Archivo Black',sans-serif;">Solar</strong>
-                  <p style="font-size:0.7rem;color:var(--gray-700);">Recharged</p>
+                  <strong style="font-size:1.2rem;font-family:'Archivo Black',sans-serif;">Solar + Li-ion</strong>
+                  <p style="font-size:0.7rem;color:var(--gray-700);">CN3065 charge controller</p>
                 </div>
               </div>
               <div class="benefits" style="border-top-color:var(--sa-gold);margin-top:0;">
                 <strong>Key Features</strong>
                 <ul style="display:grid;grid-template-columns:1fr 1fr;">
-                  <li>Real-time GPS tracking (1-min intervals)</li>
-                  <li>Geofence breach alerts</li>
-                  <li>Solar-powered deep sleep collar</li>
+                  <li>Live GPS tracking (1-min updates)</li>
+                  <li>Safe-zone breach alerts</li>
+                  <li>Solar + Li-ion — CN3065 charge controller</li>
+                  <li>Regulated power: 5V and 3.3V rails</li>
+                  <li>Bulk capacitors on both power rails</li>
                   <li>Web dashboard + Android app</li>
-                  <li>Battery voltage monitoring</li>
-                  <li>Historical trail playback</li>
-                  <li>Supabase/PostGIS backend</li>
-                  <li>Affordable at R2,000 per unit</li>
+                  <li>Battery level monitoring</li>
+                  <li>Past route playback</li>
+                  <li>Secure data storage</li>
+                  <li>Priced at R2,000 per unit</li>
                   <li><strong>Sub-collar anti-theft mesh</strong></li>
                   <li>Strap cut/breach detection</li>
-                  <li>LoRa 868 MHz mesh (up to 10 subs)</li>
-                  <li>Panic detection &amp; severity alerts</li>
+                  <li>Radio mesh links up to 10 sub-collars</li>
+                  <li>SIM800L 2G — prototype only (see note)</li>
                 </ul>
               </div>
             </div>
@@ -1180,7 +1187,7 @@
       </div>
       <h2>What We Want to <span style="color:var(--sa-gold);">Build Next</span></h2>
       <p class="section-desc">
-        Right now we're prototyping the Livestock GPS Tracker. These are the products we envision building next - all part of the goal we're working toward.
+        Right now we're building the Livestock GPS Tracker as our first product. These are the products we want to build next - all part of the goal we're working toward.
       </p>
       <div class="idea-grid">
         <div class="idea-card">
@@ -1191,7 +1198,7 @@
             <span>Security Cameras</span>
             <span>Emergency</span>
           </div>
-          <p>Solar-powered Internet Of Things (IoT) nodes on township streets providing WiFi, surveillance, and emergency buttons - without requiring major government investment.</p>
+          <p>Solar-powered smart poles on township streets providing WiFi, cameras, and emergency buttons - without needing big government investment.</p>
         </div>
 
         <div class="idea-card">
@@ -1240,31 +1247,31 @@
       </div>
       <h2>More Than <span class="highlight-gold">Devices</span></h2>
       <p class="section-desc">
-        Mzansi Connect is a complete ecosystem - an app, cloud platform, web dashboard, and marketplace working together to empower communities.
+        Mzansi Connect is more than devices - an app, data platform, web dashboard, and jobs marketplace work together to help communities.
       </p>
       <div class="eco-grid">
         <div class="eco-card">
           <img src="images/Logo.png" alt="Mzansi Connect App logo" class="eco-logo" loading="lazy" decoding="async">
           <h3>Mzansi Connect App</h3>
-          <p>View device data, receive real-time alerts, track energy usage, monitor security systems, and manage subscriptions - all from your phone.</p>
+          <p>View device data, receive instant alerts, track energy usage, monitor security systems, and manage your plan - all from your phone.</p>
           <div class="proto-actions" style="justify-content:center;margin-top:16px;">
             <a href="/app/" class="btn btn-gold" style="padding:10px 18px;font-size:0.85rem;">Try the App</a>
-            <a href="/app/downloads/mzansi-connect-app.apk" class="btn btn-outline-white" style="padding:10px 18px;font-size:0.85rem;">⬇ Download APK</a>
+            <a href="/app/downloads/mzansi-connect-app.apk" class="btn btn-outline-white" style="padding:10px 18px;font-size:0.85rem;">⬇ Download Android App</a>
           </div>
         </div>
         <div class="eco-card">
           <img src="images/Logo.png" alt="Mzansi Cloud logo" class="eco-logo" loading="lazy" decoding="async">
           <h3>Mzansi Cloud</h3>
-          <p>Secure cloud platform storing customer information and device analytics with real-time dashboards and historical reporting.</p>
+          <p>Secure online platform storing customer information and device data with live dashboards and past reports.</p>
           <div class="proto-actions" style="justify-content:center;margin-top:16px;">
             <a href="/cloud/" class="btn btn-gold" style="padding:10px 18px;font-size:0.85rem;">Try the Dashboard</a>
-            <a href="/cloud/downloads/mzansi-cloud.apk" class="btn btn-outline-white" style="padding:10px 18px;font-size:0.85rem;">⬇ Download APK</a>
+            <a href="/cloud/downloads/mzansi-cloud.apk" class="btn btn-outline-white" style="padding:10px 18px;font-size:0.85rem;">⬇ Download Android App</a>
           </div>
         </div>
         <div class="eco-card">
           <img src="images/Logo.png" alt="Livestock Tracker Dashboard logo" class="eco-logo" loading="lazy" decoding="async">
           <h3>Livestock Tracker Dashboard</h3>
-          <p>Real-time map of your herd: live locations, geofence alerts, panic warnings, battery status, and historical trail playback.</p>
+          <p>Live map of your herd: locations, safe-zone alerts, movement warnings, battery status, and past route playback.</p>
           <div class="proto-actions" style="justify-content:center;margin-top:16px;">
             <a href="/livestock/" class="btn btn-gold" style="padding:10px 18px;font-size:0.85rem;">Open the Dashboard</a>
           </div>
@@ -1275,7 +1282,7 @@
           <p>A platform where local technicians can install devices, provide support, and earn income - creating jobs while expanding technology access.</p>
           <div class="proto-actions" style="justify-content:center;margin-top:16px;">
             <a href="/marketplace/" class="btn btn-gold" style="padding:10px 18px;font-size:0.85rem;">Try the Marketplace</a>
-            <a href="/marketplace/downloads/mzansi-marketplace.apk" class="btn btn-outline-white" style="padding:10px 18px;font-size:0.85rem;">⬇ Download APK</a>
+            <a href="/marketplace/downloads/mzansi-marketplace.apk" class="btn btn-outline-white" style="padding:10px 18px;font-size:0.85rem;">⬇ Download Android App</a>
           </div>
         </div>
       </div>
@@ -1325,7 +1332,7 @@
         <span>Long-Term Vision</span>
         <div class="line" style="background:var(--sa-white);"></div>
       </div>
-      <h2>Africa's Leading <span style="color:var(--sa-gold);">Affordable Internet Of Things (IoT)</span> Provider</h2>
+      <h2>Africa's Leading <span style="color:var(--sa-gold);">Smart Device</span> Company</h2>
       <p class="section-desc">
         By 2035, we will have transformed how South Africans live, learn, and do business.
       </p>
@@ -1393,7 +1400,7 @@
           </div>
         </div>
         <p style="max-width:320px;">
-          Connecting South Africa to the Future - making Internet Of Things (IoT) affordable, practical, and accessible 
+          Connecting South Africa to the Future - making smart devices affordable, practical, and easy to use 
           for every South African.
         </p>
       </div>
@@ -1465,8 +1472,9 @@
         });
         if (res.ok) {
           status.className = 'form-status success';
-          status.textContent = 'Message sent! We\'ll be in touch.';
+          status.textContent = 'Message sent! Taking you to our thank you page...';
           form.reset();
+          setTimeout(() => { window.location.href = '/thankyou.html'; }, 800);
           return;
         }
       } catch {
