@@ -526,51 +526,17 @@
           </div>
           <div class="phone-search">
             <span class="icon">🔍</span>
-            <span>Search any product...</span>
+            <input id="pcSearch" type="text" placeholder="Search any product..." autocomplete="off"
+              style="flex:1;min-width:0;background:transparent;border:none;outline:none;color:inherit;font:inherit;">
           </div>
-          <div class="phone-chip-row">
+          <div class="phone-chip-row" id="phoneChips">
             <span class="phone-chip">🔥 Trending</span>
             <span class="phone-chip">Phones</span>
             <span class="phone-chip">Fashion</span>
             <span class="phone-chip">Audio</span>
           </div>
-          <div class="phone-products">
-            <div class="phone-product">
-              <div class="img">📱</div>
-              <div class="info">
-                <div class="name">iPhone 15 Pro Max</div>
-                <div class="price">R26,999</div>
-                <div class="stores">4 stores</div>
-              </div>
-              <button class="buy">Buy</button>
-            </div>
-            <div class="phone-product">
-              <div class="img" style="background:var(--blue);">👟</div>
-              <div class="info">
-                <div class="name">Nike Air Max 270</div>
-                <div class="price">R2,499</div>
-                <div class="stores">3 stores</div>
-              </div>
-              <button class="buy">Buy</button>
-            </div>
-            <div class="phone-product">
-              <div class="img" style="background:var(--gold);color:var(--black);">🎧</div>
-              <div class="info">
-                <div class="name">Sony WH-1000XM5</div>
-                <div class="price">R4,299</div>
-                <div class="stores">5 stores</div>
-              </div>
-              <button class="buy">Buy</button>
-            </div>
-            <div class="phone-product">
-              <div class="img" style="background:var(--red);">💻</div>
-              <div class="info">
-                <div class="name">MacBook Air M3</div>
-                <div class="price">R19,999</div>
-                <div class="stores">3 stores</div>
-              </div>
-              <button class="buy">Buy</button>
-            </div>
+          <div class="phone-products" id="phoneProducts">
+            <div style="padding:14px;font-size:0.8rem;color:#888;">Loading live prices…</div>
           </div>
           <div style="flex:1;"></div>
           <div class="phone-bottom-nav">
@@ -725,6 +691,91 @@
     </div>
   </div>
 </footer>
+
+<script>
+(function () {
+  var API = '/api/mzansi/compare/search';
+  var box = document.getElementById('phoneProducts');
+  var input = document.getElementById('pcSearch');
+  var chips = document.getElementById('phoneChips');
+  var timer;
+
+  function esc(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+  function zar(n) { return 'R' + Number(n).toLocaleString('en-ZA'); }
+  function iconFor(cat) {
+    switch (String(cat || '').toLowerCase()) {
+      case 'phones': return '📱';
+      case 'audio': return '🎧';
+      case 'fashion': case 'sneakers': return '👟';
+      case 'laptops': case 'computers': return '💻';
+      case 'tvs': return '📺';
+      case 'appliances': return '🔌';
+      case 'gaming': return '🎮';
+      default: return '🛒';
+    }
+  }
+
+  function render(products) {
+    if (!products || !products.length) {
+      box.innerHTML = '<div style="padding:14px;font-size:0.8rem;color:#888;">No results - try another search.</div>';
+      return;
+    }
+    box.innerHTML = products.slice(0, 4).map(function (p) {
+      return '<div class="phone-product">' +
+        '<div class="img">' + iconFor(p.category) + '</div>' +
+        '<div class="info">' +
+        '<div class="name">' + esc(p.name) + '</div>' +
+        '<div class="price">' + zar(p.lowest_price) + '</div>' +
+        '<div class="stores">' + (p.store_count || 0) + ' store' + (p.store_count === 1 ? '' : 's') + '</div>' +
+        '</div>' +
+        '</div>';
+    }).join('');
+  }
+
+  function doSearch(q) {
+    q = (q || '').trim();
+    if (q.length < 2) return;
+    box.innerHTML = '<div style="padding:14px;font-size:0.8rem;color:#888;">Searching\u2026</div>';
+    fetch(API + '?q=' + encodeURIComponent(q))
+      .then(function (r) { return r.json(); })
+      .then(function (d) { render(d && d.products); })
+      .catch(function () {
+        box.innerHTML = '<div style="padding:14px;font-size:0.8rem;color:#888;">Could not reach the server.</div>';
+      });
+  }
+
+  input.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') doSearch(input.value);
+  });
+  input.addEventListener('input', function () {
+    clearTimeout(timer);
+    timer = setTimeout(function () { doSearch(input.value); }, 350);
+  });
+
+  fetch(API + '/trending')
+    .then(function (r) { return r.json(); })
+    .then(function (d) {
+      var t = (d && d.trending) || [];
+      if (t.length) {
+        chips.innerHTML = t.slice(0, 4).map(function (x) {
+          return '<span class="phone-chip" role="button" data-q="' + esc(x.query) + '" style="cursor:pointer;">\uD83D\uDD25 ' + esc(x.query) + '</span>';
+        }).join('');
+        chips.querySelectorAll('.phone-chip').forEach(function (ch) {
+          ch.addEventListener('click', function () {
+            input.value = ch.getAttribute('data-q');
+            doSearch(ch.getAttribute('data-q'));
+          });
+        });
+      }
+      doSearch(t.length ? t[0].query : 'phone');
+    })
+    .catch(function () { doSearch('phone'); });
+})();
+</script>
 
 </body>
 </html>
