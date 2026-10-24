@@ -1,12 +1,7 @@
 @echo off
-cd /d "%~dp0server"
-if not exist ".env" (
-  echo.
-  echo  No .env found. Copying from .env.example...
-  echo  Edit server\.env with your values before starting.
-  echo.
-  copy .env.example .env > nul
-)
-if not exist "data" mkdir data > nul
-npm install
-npm start
+cd /d "%~dp0"
+echo Mzansi Connect - Women's Safety Preview
+echo Open http://127.0.0.1:8790/ after the server starts.
+echo Development only. Notifications are simulated. Ctrl+C stops the preview.
+python "Product\Livestock tracker\server\safety\preview.py" --port 8790
+pause
