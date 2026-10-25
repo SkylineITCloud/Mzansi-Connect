@@ -27,3 +27,5 @@ node_modules/
 **/web/config.example.js
 .ctx/
 **/.ctx/
+
+_pages/
